@@ -37,7 +37,7 @@ const AnimatedListItemButton = styled(ListItemButton)(({ theme }) => ({
 }));
 
 // Styled component for the desktop navigation links
-const StyledScrollLink = styled(ScrollLink)(({ theme }) => ({
+const StyledScrollLink = styled(ScrollLink)(() => ({
   margin: '0 10px',
   cursor: 'pointer',
   color: 'white',
