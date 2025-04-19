@@ -15,14 +15,14 @@ import "@/styles/skills.css"
 gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
-  { name: 'React', level: 90 },
-  { name: 'TypeScript', level: 85 },
-  { name: 'JavaScript', level: 95 },
-  { name: 'Next.js', level: 80 },
-  { name: 'HTML/CSS', level: 95 },
-  { name: 'Material UI', level: 85 },
-  { name: 'Framer Motion', level: 75 },
-  { name: 'GSAP', level: 70 },
+  { name: 'React', level: 90, image: '/images/reactjs.svg' },
+  { name: 'TypeScript', level: 85, image: '/images/vercel.svg' },
+  { name: 'JavaScript', level: 95, image: '/images/javascript.svg' },
+  { name: 'Next.js', level: 80, image: '/images/bootstrap.svg' },
+  { name: 'HTML/CSS', level: 95, image: '/images/html.svg' },
+  { name: 'Material UI', level: 85, image: '/images/MUI.svg' },
+  { name: 'Framer Motion', level: 75, image: '/images/css.svg' },
+  { name: 'GSAP', level: 70, image: '/images/tailwind.svg' },
 ];
 
 const itemVariants = {
@@ -66,55 +66,55 @@ const Skills: React.FC = () => {
         backgroundColor: theme.palette.background.default,
       }}
     >
-            <ul className="background1">
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-</ul>
-      <Container maxWidth="lg" sx={{position: "relative", zIndex: 1}}>
-        <Typography variant="h2" component="h2" align="center" sx={{ mb: 6 }}>
+      <ul className="background1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <Typography variant="h2" component="h2" align="center" sx={{ mb: 6, color: "#fff" }}>
           My Skills
         </Typography>
         <Grid container spacing={4}>
           {skills.map((skill, index) => (
-            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={skill.name}>
+            <Grid size={{ xs: 12, sm: 4, md: 3 }} key={skill.name}>
               <motion.div
                 custom={index}
                 initial="hidden"
@@ -126,58 +126,36 @@ const Skills: React.FC = () => {
                   sx={{
                     p: 3,
                     borderRadius: 2,
-                    backgroundColor: theme.palette.background.paper,
+                    backgroundColor: 'rgba(255, 255, 255, 0.75)', // semi-transparent
                     boxShadow: 1,
                     textAlign: 'center',
                     transition: 'all 0.3s ease',
+                    backdropFilter: 'blur(0)',
                     '&:hover': {
-                        transform: 'scale(1.05)',
-                      backgroundColor: theme.palette.primary.main,
+                      transform: 'scale(1.05)',
+                      backgroundColor: 'rgba(252, 251, 252, 0.3)',
+                      backdropFilter: 'blur(8px)',
                       color: theme.palette.primary.contrastText,
-                      boxShadow: 3,
-                      '& .progress-bar': {
-                        background: theme.palette.common.white,
-                      },
-                      '& .skill-percent': {
-                        color: theme.palette.primary.contrastText,
-                      },
+                      boxShadow: "0 4px 20px rgba(255, 255, 255, 0.2)",
                     },
                   }}
                 >
                   <Typography variant="h6" gutterBottom>
                     {skill.name}
                   </Typography>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box sx={{ width: '100%', mr: 1 }}>
-                      <Box
-                        sx={{
-                          height: 8,
-                          backgroundColor: theme.palette.grey[300],
-                          borderRadius: 4,
-                          overflow: 'hidden',
-                        }}
-                      >
-                        <motion.div
-                          className="progress-bar"
-                          style={{
-                            height: '100%',
-                            width: `${skill.level}%`,
-                            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                            borderRadius: 4,
-                          }}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: index * 0.1 }}
-                        />
-                      </Box>
-                    </Box>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      className="skill-percent"
-                    >
-                      {skill.level}%
-                    </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2 }}>
+                    <Box
+                      className="skill-icon"
+                      component="img"
+                      src={skill.image}
+                      alt={skill.name}
+                      sx={{
+                        width: 80,
+                        height: 80,
+                        objectFit: 'contain',
+                        transition: 'all 0.3s ease',
+                      }}
+                    />
                   </Box>
                 </Box>
               </motion.div>
