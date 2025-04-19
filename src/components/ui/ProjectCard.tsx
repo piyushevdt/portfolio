@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Typography, Chip, Card, CardMedia, CardContent } from '@mui/material';
+import { Box, Typography, Chip, Card, CardMedia, CardContent, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
+import { SxProps, Theme } from '@mui/material';
+
 
 interface ProjectCardProps {
   title: string;
@@ -9,6 +11,9 @@ interface ProjectCardProps {
   image: string;
   link: string;
   delay?: number;
+  accentColor?: string;
+  sx?: SxProps<Theme>;
+
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
@@ -16,14 +21,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description, 
   technologies, 
   image, 
-  delay = 0 
+  link,
+  delay = 0,
+  accentColor,
+  sx
 }) => {
+  const theme = useTheme();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay }}
       whileHover={{ y: -10 }}
+      style={{ height: '100%' }}
     >
       <Card 
         sx={{ 
@@ -32,9 +43,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           flexDirection: 'column',
           transition: 'transform 0.3s, box-shadow 0.3s',
           '&:hover': {
-            boxShadow: 6,
+            transform: 'translateY(-5px)',
+            boxShadow: `0 10px 20px rgba(0, 0, 0, 0.2)`,
           },
+          backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.background.paper,
+          ...sx, // <-- Apply last so it can override previous styles, including &:hover
         }}
+        component="a"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <CardMedia
           component="img"
@@ -43,24 +61,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           sx={{ 
             height: 200,
             objectFit: 'cover',
+            borderBottom: `4px solid ${accentColor || theme.palette.primary.main}`,
           }}
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography gutterBottom variant="h5" component="h3">
+          <Typography gutterBottom variant="h5" component="h3" sx={{ color: theme.palette.text.primary }}>
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          <Typography variant="body2" sx={{ mb: 2, color: theme.palette.text.secondary }}>
             {description}
           </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {technologies.map((tech) => (
               <Chip 
                 key={tech} 
                 label={tech} 
                 size="small" 
                 sx={{ 
-                  backgroundColor: 'primary.light',
-                  color: 'primary.contrastText',
+                  backgroundColor: accentColor 
+                    ? `${accentColor}20` // Adds transparency (20% opacity)
+                    : theme.palette.mode === 'dark' 
+                      ? theme.palette.grey[800] 
+                      : theme.palette.grey[200],
+                  color: accentColor 
+                    ? accentColor 
+                    : theme.palette.text.primary,
+                  fontWeight: 500,
                 }}
               />
             ))}
