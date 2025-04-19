@@ -10,6 +10,7 @@ import {
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { motion } from 'framer-motion';
+import "@/styles/skills.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,7 +66,49 @@ const Skills: React.FC = () => {
         backgroundColor: theme.palette.background.default,
       }}
     >
-      <Container maxWidth="lg">
+            <ul className="background1">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
+      <Container maxWidth="lg" sx={{position: "relative", zIndex: 1}}>
         <Typography variant="h2" component="h2" align="center" sx={{ mb: 6 }}>
           My Skills
         </Typography>

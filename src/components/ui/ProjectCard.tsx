@@ -38,6 +38,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       <Card 
         sx={{ 
+          borderRadius: "20px",
+          boxShadow: `0 5px 10px rgba(0, 0, 0, 0.1)`,
           height: '100%', 
           display: 'flex', 
           flexDirection: 'column',

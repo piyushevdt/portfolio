@@ -3,6 +3,7 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import CustomButton from '../ui/CustomButton';
+import "@/styles/hero.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,6 +168,48 @@ const Hero: React.FC = () => {
                 },
             }}
         >
+            <ul className="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
             {/* Bubbles container */}
             <Box 
                 ref={bubblesRef}
