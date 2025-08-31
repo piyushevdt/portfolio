@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, Container, Typography, TextField, useTheme } from '@mui/material';
+import { Box, Container, Typography, TextField, Alert, CircularProgress } from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import CustomButton from '../ui/CustomButton';
@@ -7,7 +7,6 @@ import CustomButton from '../ui/CustomButton';
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact: React.FC = () => {
-  const theme = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
@@ -15,6 +14,8 @@ const Contact: React.FC = () => {
     email: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (sectionRef.current && formRef.current) {
@@ -49,28 +50,89 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setStatus('submitting');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/piyushkdbittu@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New contact form submission from ${formData.name}`,
+          _template: 'table' // Optional: makes the email more readable
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success === 'true') {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+
+        // Reset status after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMessage('There was a problem sending your message. Please try again later.');
+
+      // Reset error status after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+    }
   };
 
   return (
-    <Box 
+    <Box
       ref={sectionRef}
       id="contact"
-      sx={{ 
+      sx={{
         py: 10,
-        backgroundColor: theme.palette.background.default,
+        // backgroundColor: theme.palette.background.default,
       }}
     >
-      <Container maxWidth="md">
-        <Typography variant="h2" component="h2" align="center" sx={{ mb: 6 }}>
+      <Container maxWidth="md" sx={{
+        background:
+          "transparent linear-gradient(180deg, rgba(0, 238, 255, 0.67) 0%, rgba(0, 238, 255, 0.05) 100%)",
+        borderRadius: "16px",
+        padding: 3,
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        boxShadow: "0 0 10px rgba(129, 129, 129, 0.81)",
+        "&:hover": {
+          transform: "scale(1.02)",
+          boxShadow: "0 0 13px 6px rgba(0, 249, 241, 0.81)",
+        },
+      }}>
+        <Typography variant="h2" component="h2" align="center" sx={{ mb: 6,  color: "#fff", }}>
           Get In Touch
         </Typography>
-        <Box 
+
+        {/* Status Alerts */}
+        {status === 'success' && (
+          <Alert severity="success" sx={{ mb: 3 }}>
+            Your message has been sent successfully! We&apos;ll get back to you soon.
+          </Alert>
+        )}
+        {status === 'error' && (
+          <Alert severity="error" sx={{ mb: 3 }}>
+            {errorMessage}
+          </Alert>
+        )}
+
+        <Box
           ref={formRef}
-          component="form" 
+          component="form"
           onSubmit={handleSubmit}
           sx={{
             display: 'flex',
@@ -86,6 +148,7 @@ const Contact: React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            disabled={status === 'submitting'}
           />
           <TextField
             name="email"
@@ -96,6 +159,7 @@ const Contact: React.FC = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            disabled={status === 'submitting'}
           />
           <TextField
             name="message"
@@ -107,19 +171,26 @@ const Contact: React.FC = () => {
             value={formData.message}
             onChange={handleChange}
             required
+            disabled={status === 'submitting'}
           />
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <CustomButton 
-              type="submit" 
-              variant="contained" 
+            <CustomButton
+              type="submit"
+              variant="contained"
               size="large"
-              sx={{ 
+              disabled={status === 'submitting'}
+              sx={{
                 px: 6,
                 py: 1.5,
                 fontSize: '1.1rem',
+                minWidth: 160,
               }}
             >
-              Send Message
+              {status === 'submitting' ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                'Send Message'
+              )}
             </CustomButton>
           </Box>
         </Box>

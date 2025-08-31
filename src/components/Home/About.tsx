@@ -153,12 +153,12 @@ const About: React.FC = () => {
       id="about"
       sx={{
         py: 12,
-        background: `
-          linear-gradient(135deg, 
-            ${theme.palette.background.default} 0%, 
-            ${theme.palette.background.paper} 50%, 
-            ${theme.palette.background.default} 100%)
-        `,
+        // background: `
+        //   linear-gradient(135deg, 
+        //     ${theme.palette.background.default} 0%, 
+        //     ${theme.palette.background.paper} 50%, 
+        //     ${theme.palette.background.default} 100%)
+        // `,
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
@@ -219,7 +219,7 @@ const About: React.FC = () => {
           <Typography
             variant="subtitle1"
             sx={{
-              color: theme.palette.text.secondary,
+              color: "#fff",
               maxWidth: 600,
               mx: 'auto',
             }}
@@ -294,7 +294,7 @@ const About: React.FC = () => {
                 sx={{
                   fontWeight: 700,
                   mb: 3,
-                  color: theme.palette.text.primary,
+                   color: "#fff",
                   position: 'relative',
                   display: 'inline-block',
                   '&::after': {
@@ -317,10 +317,10 @@ const About: React.FC = () => {
                   mb: 3,
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
-                  color: theme.palette.text.secondary,
+                   color: "#fff",
                 }}
               >
-                I&apos;m a <strong style={{ color: theme.palette.primary.main }}>passionate frontend developer</strong> with 5 years of experience crafting immersive digital experiences. I specialize in creating performant, accessible, and visually stunning web applications.
+                I&apos;m a <strong style={{ color: "red" }}>passionate frontend developer</strong> with 5 years of experience crafting immersive digital experiences. I specialize in creating performant, accessible, and visually stunning web applications.
               </Typography>
               <Typography
                 paragraph
@@ -328,10 +328,10 @@ const About: React.FC = () => {
                   mb: 3,
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
-                  color: theme.palette.text.secondary,
+                   color: "#fff",
                 }}
               >
-                My goal is to build applications that are not only functional but also provide an <strong style={{ color: theme.palette.secondary.main }}>exceptional user experience</strong>. I pay attention to details and always strive to write clean, maintainable code with a focus on scalability and performance.
+                My goal is to build applications that are not only functional but also provide an <strong style={{ color: "red" }}>exceptional user experience</strong>. I pay attention to details and always strive to write clean, maintainable code with a focus on scalability and performance.
               </Typography>
               <Typography
                 paragraph
@@ -339,7 +339,7 @@ const About: React.FC = () => {
                   mb: 4,
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
-                  color: theme.palette.text.secondary,
+                  color: "#fff",
                 }}
               >
                 When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities that keep me inspired and energized.
