@@ -13,15 +13,15 @@ import Navbar from '@/components/layouts/Navbar';
 const Home: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-  <CssBaseline />
-  <Navbar />
-  <div id="home"><Hero /></div>
-  <div id="about"><About /></div>
-  <div id="skills"><Skills /></div>
-  <div id="projects"><Projects /></div>
-  <div id="contact"><Contact /></div>
-  <Footer />
-</ThemeProvider>
+      <CssBaseline />
+      <Navbar />
+      <div id="home"><Hero /></div>
+      <div id="about"><About /></div>
+      <div id="skills"><Skills /></div>
+      <div id="projects"><Projects /></div>
+      <div id="contact"><Contact /></div>
+      <Footer />
+    </ThemeProvider>
 
   );
 };

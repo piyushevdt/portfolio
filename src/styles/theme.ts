@@ -1,9 +1,15 @@
 import { createTheme } from '@mui/material/styles';
+import { Shadows_Into_Light } from 'next/font/google';
+
+export const shadowsIntoLight = Shadows_Into_Light({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#3f51b5',
+      main: '#39fcfcff',
     },
     secondary: {
       main: '#f50057',
@@ -14,14 +20,54 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontSize: '3rem',
-      fontWeight: 700,
+      fontFamily: shadowsIntoLight.style.fontFamily,
+      h1: {
+        fontSize: '3.5rem',
+        fontWeight: 700,
+      },
+      h2: {
+        fontSize: '2.8rem',
+        fontWeight: 600,
+      },
+      h3: {
+        fontSize: '2.2rem',
+        fontWeight: 600,
+      },
+      h4: {
+        fontSize: '1.8rem',
+      },
+      h5: {
+        fontSize: '1.5rem',
+      },
+      h6: {
+        fontSize: '1.2rem',
+      },
     },
-    h2: {
-      fontSize: '2.5rem',
-      fontWeight: 600,
+   components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(0, 249, 241, 1)",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(0, 249, 241, 1)",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(0, 249, 241, 1)",
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "rgba(0, 249, 241, 0.7)", // default label
+          "&.Mui-focused": {
+            color: "rgba(0, 249, 241, 1)", // focused label
+          },
+        },
+      },
     },
   },
 });

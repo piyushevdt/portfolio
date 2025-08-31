@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, Container, Typography, useTheme } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import CustomButton from '../ui/CustomButton';
@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero: React.FC = () => {
     const [mounted, setMounted] = useState(false);
-    const theme = useTheme();
     const heroRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const bubblesRef = useRef<HTMLDivElement>(null);
@@ -117,58 +116,58 @@ const Hero: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'white',
-                position: 'relative',
-                overflow: 'hidden',
-                background: `
-                    linear-gradient(
-                        135deg,
-                        ${theme.palette.primary.main} 0%,
-                        ${theme.palette.secondary.main} 25%,
-                        ${theme.palette.primary.dark} 50%,
-                        ${theme.palette.secondary.dark} 75%,
-                        ${theme.palette.primary.main} 100%
-                    )`,
-                backgroundSize: '400% 400%',
-                animation: 'gradientWave 12s ease infinite',
-                '@keyframes gradientWave': {
-                    '0%': {
-                        backgroundPosition: '0% 50%',
-                    },
-                    '50%': {
-                        backgroundPosition: '100% 50%',
-                    },
-                    '100%': {
-                        backgroundPosition: '0% 50%',
-                    },
-                },
-                '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: `
-                        radial-gradient(
-                            circle at 75% 30%,
-                            rgba(255, 255, 255, 0.1) 0%,
-                            transparent 50%
-                        )`,
-                    animation: 'pulse 8s ease infinite alternate',
-                    '@keyframes pulse': {
-                        '0%': {
-                            transform: 'scale(1)',
-                            opacity: 0.5,
-                        },
-                        '100%': {
-                            transform: 'scale(1.2)',
-                            opacity: 0.2,
-                        },
-                    },
-                },
+                // position: 'relative',
+                // overflow: 'hidden',
+                // background: `
+                //     linear-gradient(
+                //         135deg,
+                //         ${theme.palette.primary.main} 0%,
+                //         ${theme.palette.secondary.main} 25%,
+                //         ${theme.palette.primary.dark} 50%,
+                //         ${theme.palette.secondary.dark} 75%,
+                //         ${theme.palette.primary.main} 100%
+                //     )`,
+                // backgroundSize: '400% 400%',
+                // animation: 'gradientWave 12s ease infinite',
+                // '@keyframes gradientWave': {
+                //     '0%': {
+                //         backgroundPosition: '0% 50%',
+                //     },
+                //     '50%': {
+                //         backgroundPosition: '100% 50%',
+                //     },
+                //     '100%': {
+                //         backgroundPosition: '0% 50%',
+                //     },
+                // },
+                // '&::before': {
+                //     content: '""',
+                //     position: 'absolute',
+                //     top: 0,
+                //     left: 0,
+                //     right: 0,
+                //     bottom: 0,
+                //     background: `
+                //         radial-gradient(
+                //             circle at 75% 30%,
+                //             rgba(255, 255, 255, 0.1) 0%,
+                //             transparent 50%
+                //         )`,
+                //     animation: 'pulse 8s ease infinite alternate',
+                //     '@keyframes pulse': {
+                //         '0%': {
+                //             transform: 'scale(1)',
+                //             opacity: 0.5,
+                //         },
+                //         '100%': {
+                //             transform: 'scale(1.2)',
+                //             opacity: 0.2,
+                //         },
+                //     },
+                // },
             }}
         >
-            <ul className="background">
+            {/* <ul className="background">
    <li></li>
    <li></li>
    <li></li>
@@ -209,7 +208,7 @@ const Hero: React.FC = () => {
    <li></li>
    <li></li>
    <li></li>
-</ul>
+</ul> */}
             {/* Bubbles container */}
             <Box 
                 ref={bubblesRef}
