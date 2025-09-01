@@ -10,6 +10,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { motion } from 'framer-motion';
 import "@/styles/skills.css"
+import useResponsive from '@/hooks/useResponsive';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ const itemVariants = {
 
 const Skills: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useResponsive(768);
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -61,7 +63,7 @@ const Skills: React.FC = () => {
       ref={sectionRef}
       id="skills"
       sx={{
-        py: 10,
+        py: {xs: 2, md: 10},
         // backgroundColor: theme.palette.background.default,
       }}
     >
@@ -113,7 +115,7 @@ const Skills: React.FC = () => {
         </Typography>
         <Grid container spacing={4} sx={{justifyContent: 'center'}}>
           {skills.map((skill, index) => (
-            <Grid size={{ xs: 12, sm: 4, md: 3 }} key={skill.name}>
+            <Grid size={{ xs: 6, sm: 4, md: 3 }} key={skill.name}>
               <motion.div
                 custom={index}
                 initial="hidden"
@@ -123,7 +125,7 @@ const Skills: React.FC = () => {
               >
                 <Box
                   sx={{
-                    p: 3,
+                    p:isMobile? 1: 3,
                     borderRadius: 2,
                     backgroundColor: 'rgba(255, 255, 255, 0.75)', // semi-transparent
                     boxShadow: 1,
@@ -140,7 +142,7 @@ const Skills: React.FC = () => {
                     },
                   }}
                 >
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant={isMobile ? "body1" : "h5"} gutterBottom>
                     {skill.name}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2 }}>
