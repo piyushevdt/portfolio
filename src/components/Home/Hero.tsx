@@ -11,7 +11,6 @@ const Hero: React.FC = () => {
     const [mounted, setMounted] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
-    const bubblesRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setMounted(true);
@@ -40,66 +39,9 @@ const Hero: React.FC = () => {
                     scrub: true,
                 },
             });
-    
-            // Create bubbles
-            const bubblesContainer = bubblesRef.current; // Capture current value
-            if (bubblesContainer) {
-                const bubblesCount = 15;
-                const bubbles: HTMLElement[] = [];
-                
-                for (let i = 0; i < bubblesCount; i++) {
-                    const bubble = document.createElement('div');
-                    bubble.style.position = 'absolute';
-                    bubble.style.borderRadius = '50%';
-                    bubble.style.background = `rgba(255, 255, 255, ${Math.random() * 0.2 + 0.05})`;
-                    bubble.style.width = `${Math.random() * 20 + 10}px`;
-                    bubble.style.height = bubble.style.width;
-                    
-                    // Random position
-                    bubble.style.left = `${Math.random() * 100}%`;
-                    bubble.style.top = `${Math.random() * 100}%`;
-                    
-                    bubblesContainer.appendChild(bubble);
-                    bubbles.push(bubble);
-                }
-    
-                // Animate bubbles
-                bubbles.forEach(bubble => {
-                    const duration = Math.random() * 15 + 10;
-                    const delay = Math.random() * 5;
-                    const xMovement = (Math.random() - 0.5) * 100;
-                    
-                    gsap.to(bubble, {
-                        y: -150,
-                        x: xMovement,
-                        opacity: 0,
-                        duration: duration,
-                        delay: delay,
-                        ease: 'none',
-                        onComplete: () => {
-                            // Reset position and restart animation
-                            bubble.style.left = `${Math.random() * 100}%`;
-                            bubble.style.top = '100%';
-                            bubble.style.opacity = '0.5';
-                            gsap.to(bubble, {
-                                y: -150,
-                                x: (Math.random() - 0.5) * 100,
-                                opacity: 0,
-                                duration: duration,
-                                ease: 'none',
-                                repeat: -1,
-                                repeatDelay: 0
-                            });
-                        }
-                    });
-                });
-            }
+
     
             return () => {
-                // Use the captured value in cleanup
-                if (bubblesContainer) {
-                    bubblesContainer.innerHTML = '';
-                }
                 // Clean up GSAP animations
                 ScrollTrigger.getAll().forEach(trigger => trigger.kill());
                 gsap.killTweensOf('*');
@@ -209,19 +151,7 @@ const Hero: React.FC = () => {
    <li></li>
    <li></li>
 </ul> */}
-            {/* Bubbles container */}
-            <Box 
-                ref={bubblesRef}
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden',
-                    zIndex: 0,
-                }}
-            />
+            
             
             <Container maxWidth="lg">
                 <Box ref={textRef} sx={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>

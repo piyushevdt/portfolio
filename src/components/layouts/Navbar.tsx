@@ -144,13 +144,13 @@ const Navbar: React.FC = () => {
                 elevation={scrolled ? 4 : 0}
                 sx={{
                     backdropFilter: scrolled ? "blur(10px)" : "none",
-                    backgroundColor: scrolled ? "rgba(161, 161, 161, 0.51)" : "transparent",
+                    backgroundColor: scrolled ? "rgba(75, 255, 240, 0.33)" : "transparent",
                     transition: "all 0.3s ease",
-                    boxShadow: scrolled ? "0px 4px 20px rgba(0, 0, 0, 0.1)" : "none",
+                    boxShadow: scrolled ? "0px 4px 20px rgba(1, 236, 248, 0.27)" : "none",
                 }}>
                 <Container maxWidth="lg" disableGutters>
                     <Toolbar>
-                        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6" sx={{ flexGrow: 1, color: "#fff", }}>
                             My Portfolio
                         </Typography>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -189,7 +189,7 @@ const Navbar: React.FC = () => {
                     '& .MuiDrawer-paper': {
                         boxSizing: 'border-box',
                         width: 240,
-                        backgroundColor: "rgba(255, 255, 255, 0.24)",
+                        backgroundColor: "rgba(41, 255, 255, 0.24)",
                         backdropFilter: "blur(10px)",
                         boxShadow: "none",
                         color: "#fff"

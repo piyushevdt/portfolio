@@ -16,11 +16,11 @@ interface ProjectCardProps {
 
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ 
-  title, 
-  description, 
-  technologies, 
-  image, 
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  description,
+  technologies,
+  image,
   link,
   delay = 0,
   accentColor,
@@ -36,20 +36,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       whileHover={{ y: -10 }}
       style={{ height: '100%' }}
     >
-      <Card 
-        sx={{ 
-          borderRadius: "20px",
-          boxShadow: `0 5px 10px rgba(0, 0, 0, 0.1)`,
-          height: '100%', 
-          display: 'flex', 
+      <Card
+        sx={{
+          color: "#fff",
+          height: '100%',
+          display: 'flex',
           flexDirection: 'column',
-          transition: 'transform 0.3s, box-shadow 0.3s',
-          '&:hover': {
-            transform: 'translateY(-5px)',
-            boxShadow: `0 10px 20px rgba(0, 0, 0, 0.2)`,
+          background:
+            "transparent linear-gradient(180deg, rgba(0, 238, 255, 0.67) 0%, rgba(0, 238, 255, 0.05) 100%)",
+          borderRadius: "16px",
+          // padding: 3,
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          boxShadow: "0 0 10px rgba(129, 129, 129, 0.81)",
+          "&:hover": {
+            transform: "scale(1.02)",
+            boxShadow: "0 0 13px 6px rgba(0, 249, 241, 0.81)",
+            background:
+            "transparent linear-gradient(180deg, rgba(0, 238, 255, 0.92) 0%, rgba(0, 238, 255, 0.05) 100%)",
           },
-          backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.background.paper,
-          ...sx, // <-- Apply last so it can override previous styles, including &:hover
+          // backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.background.paper,
+          ...sx, 
         }}
         component="a"
         href={link}
@@ -60,33 +66,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           component="img"
           image={image}
           alt={title}
-          sx={{ 
+          sx={{
             height: 200,
             objectFit: 'cover',
             borderBottom: `4px solid ${accentColor || theme.palette.primary.main}`,
           }}
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography gutterBottom variant="h5" component="h3" sx={{ color: theme.palette.text.primary }}>
+          <Typography gutterBottom variant="h5" component="h3" sx={{color: "#fff", }}>
             {title}
           </Typography>
-          <Typography variant="body2" sx={{ mb: 2, color: theme.palette.text.secondary }}>
+          <Typography variant="body2" sx={{ mb: 2, color: "#fff", }}>
             {description}
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {technologies.map((tech) => (
-              <Chip 
-                key={tech} 
-                label={tech} 
-                size="small" 
-                sx={{ 
-                  backgroundColor: accentColor 
+              <Chip
+                key={tech}
+                label={tech}
+                size="small"
+                sx={{
+                  backgroundColor: accentColor
                     ? `${accentColor}20` // Adds transparency (20% opacity)
-                    : theme.palette.mode === 'dark' 
-                      ? theme.palette.grey[800] 
+                    : theme.palette.mode === 'dark'
+                      ? theme.palette.grey[800]
                       : theme.palette.grey[200],
-                  color: accentColor 
-                    ? accentColor 
+                  color: accentColor
+                    ? accentColor
                     : theme.palette.text.primary,
                   fontWeight: 500,
                 }}
