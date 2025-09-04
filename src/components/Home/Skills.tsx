@@ -23,7 +23,9 @@ const skills = [
   { name: 'CSS', level: 95, image: '/images/css.svg' },
   { name: 'Material UI', level: 85, image: '/images/MUI.svg' },
   { name: 'Framer Motion', level: 75, image: 'https://images.seeklogo.com/logo-png/44/3/framer-motion-logo-png_seeklogo-446185.png' },
-  { name: 'GSAP', level: 70, image: '/images/tailwind.svg' },
+  { name: 'Tailwind CSS', level: 70, image: '/images/tailwind.svg' },
+  { name: 'GSAP', level: 70, image: 'https://dzakifadh.dev/img/gsap.png' },
+  { name: 'Redux', level: 70, image: '/images/redux.svg' },
 ];
 
 const itemVariants = {
