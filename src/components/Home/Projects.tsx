@@ -11,6 +11,18 @@ const Projects: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
+  const getAccentColor = (index: number) => {
+    const colors = [
+      '#FF5252', 
+      '#FF9800', 
+      '#4CAF50', 
+      '#2196F3',
+      '#9C27B0', 
+      '#00BCD4', 
+    ];
+    return colors[index % colors.length];
+  };
+
   useEffect(() => {
     if (sectionRef.current && projectsRef.current) {
       gsap.from(sectionRef.current, {
@@ -52,13 +64,15 @@ const Projects: React.FC = () => {
         <Grid container spacing={4} ref={projectsRef}>
           {projects.map((project, index) => (
             <Grid size={{ xs: 12, sm: 6 }} key={index}>
-              <ProjectCard 
+               <ProjectCard
+                id={project.id}
                 title={project.title}
                 description={project.description}
                 technologies={project.technologies}
                 image={project.image}
                 link={project.link}
-                delay={index * 0.1}
+                accentColor={getAccentColor(index)}
+                externalLink={false}
               />
             </Grid>
           ))}
