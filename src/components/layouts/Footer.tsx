@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Container, Typography, IconButton, Link } from '@mui/material';
 import { gsap } from 'gsap';
-import { GitHub, LinkedIn, Twitter, Email } from '@mui/icons-material';
+import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 
 const Footer: React.FC = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
           <IconButton 
-            href="https://github.com/yourusername" 
+            href="https://github.com/piyushevdt" 
             target="_blank" 
             rel="noopener"
             color="inherit"
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             <GitHub fontSize="large" />
           </IconButton>
           <IconButton 
-            href="https://linkedin.com/in/yourusername" 
+            href="https://www.linkedin.com/in/piyush-kumar-dewangan-94124a256" 
             target="_blank" 
             rel="noopener"
             color="inherit"
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
           >
             <LinkedIn fontSize="large" />
           </IconButton>
-          <IconButton 
+          {/* <IconButton 
             href="https://twitter.com/yourusername" 
             target="_blank" 
             rel="noopener"
@@ -59,17 +59,17 @@ const Footer: React.FC = () => {
             sx={{ mx: 1 }}
           >
             <Twitter fontSize="large" />
-          </IconButton>
+          </IconButton> */}
           <IconButton 
-            href="mailto:your.email@example.com" 
+            href="mailto:piyushkdbittu@gmail.com" 
             color="inherit"
             sx={{ mx: 1 }}
           >
             <Email fontSize="large" />
           </IconButton>
         </Box>
-        <Typography variant="body1" align="center">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
+        <Typography variant="body1" align="center" sx={{fontWeight: '700'}}>
+          © {new Date().getFullYear()} Piyush Kumar Dewangan. All rights reserved.
         </Typography>
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           Built with <Link href="https://nextjs.org/" color="inherit" target="_blank">Next.js</Link>,{' '}
