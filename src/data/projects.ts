@@ -14,41 +14,41 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  {
-    id: 'e-commerce-platform',
-    title: 'E-commerce Platform',
-    description: 'A full-featured online store with cart functionality, user authentication, and payment processing.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    image: '/images/javascript.svg',
-    link: '#',
-    detailedDescription: 'A comprehensive e-commerce solution built with a React frontend and Node.js backend. The platform includes user authentication, product catalog, shopping cart, checkout process, and integration with Stripe for payment processing.',
-    features: [
-      'User authentication and profile management',
-      'Product catalog with filtering and search',
-      'Shopping cart and wishlist functionality',
-      'Secure checkout process with Stripe integration',
-      'Order history and tracking',
-      'Admin dashboard for product management'
-    ],
-    challenges: [
-      'Implementing secure payment processing',
-      'Creating a responsive design for all device sizes',
-      'Optimizing database queries for performance'
-    ],
-    solutions: [
-      "Used Stripe's secure API for handling sensitive payment information",
-      'Implemented responsive design with Material UI and custom CSS',
-      'Created efficient MongoDB queries with proper indexing'
-    ],
-    github: 'https://github.com/yourusername/ecommerce-platform',
-    demoUrl: 'https://ecommerce-demo.example.com'
-  },
+  // {
+  //   id: 'e-commerce-platform',
+  //   title: 'E-commerce Platform',
+  //   description: 'A full-featured online store with cart functionality, user authentication, and payment processing.',
+  //   technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+  //   image: '/images/javascript.svg',
+  //   link: '#',
+  //   detailedDescription: 'A comprehensive e-commerce solution built with a React frontend and Node.js backend. The platform includes user authentication, product catalog, shopping cart, checkout process, and integration with Stripe for payment processing.',
+  //   features: [
+  //     'User authentication and profile management',
+  //     'Product catalog with filtering and search',
+  //     'Shopping cart and wishlist functionality',
+  //     'Secure checkout process with Stripe integration',
+  //     'Order history and tracking',
+  //     'Admin dashboard for product management'
+  //   ],
+  //   challenges: [
+  //     'Implementing secure payment processing',
+  //     'Creating a responsive design for all device sizes',
+  //     'Optimizing database queries for performance'
+  //   ],
+  //   solutions: [
+  //     "Used Stripe's secure API for handling sensitive payment information",
+  //     'Implemented responsive design with Material UI and custom CSS',
+  //     'Created efficient MongoDB queries with proper indexing'
+  //   ],
+  //   github: 'https://github.com/yourusername/ecommerce-platform',
+  //   demoUrl: 'https://ecommerce-demo.example.com'
+  // },
   {
     id: 'portfolio-website',
     title: 'Portfolio Website',
     description: 'A responsive portfolio website with animations and interactive elements.',
-    technologies: ['Next.js', 'Material UI', 'Framer Motion'],
-    image: '/images/javascript.svg',
+    technologies: ['Next.js', 'Material UI', 'TypeScript','Framer Motion'],
+    image: '/images/portfolio.png',
     link: '#',
     detailedDescription: 'A modern portfolio website built using Next.js to showcase my projects and skills. The site features smooth animations, interactive elements, and a responsive design that works across all devices.',
     features: [
@@ -68,15 +68,15 @@ export const projects: Project[] = [
       'Implemented theme context with smooth transitions',
       'Optimized images with Next.js Image component and proper sizing'
     ],
-    github: 'https://github.com/yourusername/portfolio-website',
-    demoUrl: 'https://portfolio.example.com'
+    github: 'hhttps://github.com/piyushevdt/portfolio',
+    demoUrl: 'https://portfolio-six-beta-17.vercel.app'
   },
   {
     id: 'hems-corporation',
     title: 'Hems Corporation',
     description: 'A dynamic construction services website with interactive project showcases and client communication tools.',
     technologies: ['React.js', 'Material-UI', 'Framer Motion', 'JavaScript', 'EmailJS'],
-    image: '/images/hems-construction-preview.jpg', // Replace with actual image path
+    image: '/images/hems.png', // Replace with actual image path
     link: '#',
     detailedDescription: 'A modern website for Hems Corporation featuring smooth animations, a project portfolio gallery, and seamless contact form integration with EmailJS for instant client inquiries.',
     features: [
@@ -96,15 +96,15 @@ export const projects: Project[] = [
       'Designed touch-friendly carousels with Framer Motion gestures',
       'Integrated EmailJS for direct client-to-email workflows'
     ],
-    github: 'https://github.com/yourusername/hems-corporation',
-    demoUrl: 'https://hems-construction-demo.netlify.app/'
+    github: 'https://github.com/piyushevdt/hems-website',
+    demoUrl: 'https://hems-website.vercel.app/'
   },
   {
     id: 'weather-dashboard',
     title: 'Weather Dashboard',
     description: 'Real-time weather information with interactive maps and forecasts.',
-    technologies: ['React', 'TypeScript', 'OpenWeather API'],
-    image: '/images/javascript.svg',
+    technologies: ['React', 'JavaScript', 'OpenWeather API'],
+    image: '/images/weather.png',
     link: '#',
     detailedDescription: 'A weather dashboard that provides real-time weather information, forecasts, and interactive maps. The application uses the OpenWeather API to fetch accurate weather data and presents it in an intuitive interface.',
     features: [
@@ -125,7 +125,7 @@ export const projects: Project[] = [
       'Used chart.js for clear data visualization',
       'Created intelligent caching to minimize API calls'
     ],
-    github: 'https://github.com/yourusername/weather-dashboard',
-    demoUrl: 'https://weather.example.com'
+    github: 'https://github.com/piyushevdt/weather-dashboard',
+    demoUrl: 'https://weather-dashboard-ecru-five.vercel.app/'
   }
 ];
