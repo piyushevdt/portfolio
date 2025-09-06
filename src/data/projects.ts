@@ -127,5 +127,33 @@ export const projects: Project[] = [
     ],
     github: 'https://github.com/piyushevdt/weather-dashboard',
     demoUrl: 'https://weather-dashboard-ecru-five.vercel.app/'
-  }
+  },
+  {
+  id: 'oss-website',
+  title: 'One Stop Service',
+  description: 'A solar panel information and service website with contact support.',
+  technologies: ['React', 'JavaScript', 'Material UI', 'Framer Motion'],
+  image: '/images/oss.png',
+  link: '#',
+  detailedDescription: 'A static website showcasing solar panel products and services. The platform provides detailed information about solar panels, their benefits, and allows users to directly contact the seller via email for queries.',
+  features: [
+    'Informative sections about solar panels and their benefits',
+    'Static data display for solar panel products and services',
+    'Contact form integration to send queries via email',
+    'Clean and modern UI with responsive design',
+    'Smooth animations using Framer Motion'
+  ],
+  challenges: [
+    'Presenting technical solar panel data in a user-friendly format',
+    'Ensuring responsiveness across devices',
+    'Building a reliable contact system for user queries'
+  ],
+  solutions: [
+    'Structured data into clear sections with visual emphasis',
+    'Implemented responsive layouts using Material UI',
+    'Integrated mail functionality for direct user-to-seller communication'
+  ],
+  github: 'https://github.com/piyushevdt/oss-website',
+  demoUrl: 'https://oss-website.netlify.app/'
+}
 ];
