@@ -294,7 +294,7 @@ const About: React.FC = () => {
                 sx={{
                   fontWeight: 700,
                   mb: 3,
-                   color: "#fff",
+                  color: "#fff",
                   position: 'relative',
                   display: 'inline-block',
                   '&::after': {
@@ -317,22 +317,24 @@ const About: React.FC = () => {
                   mb: 3,
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
-                   color: "#fff",
+                  color: "#fff",
                 }}
               >
-                I&apos;m a <strong style={{ color: "red" }}>passionate frontend developer</strong> with 5 years of experience crafting immersive digital experiences. I specialize in creating performant, accessible, and visually stunning web applications.
+                I&apos;m a <strong style={{ color: "red" }}>frontend developer</strong> with hands-on experience in building responsive and user-friendly web applications. I specialize in working with <strong style={{ color: "red" }}>React, Next.js, and modern UI libraries</strong> to create clean and engaging digital experiences.
               </Typography>
+
               <Typography
                 paragraph
                 sx={{
                   mb: 3,
                   fontSize: '1.1rem',
                   lineHeight: 1.8,
-                   color: "#fff",
+                  color: "#fff",
                 }}
               >
-                My goal is to build applications that are not only functional but also provide an <strong style={{ color: "red" }}>exceptional user experience</strong>. I pay attention to details and always strive to write clean, maintainable code with a focus on scalability and performance.
+                My goal is to develop applications that are not only functional but also deliver an <strong style={{ color: "red" }}>intuitive and enjoyable user experience</strong>. I focus on writing clean, maintainable code and continuously improving my skills in performance optimization and scalability.
               </Typography>
+
               <Typography
                 paragraph
                 sx={{
@@ -342,9 +344,9 @@ const About: React.FC = () => {
                   color: "#fff",
                 }}
               >
-                When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities that keep me inspired and energized.
+                Beyond coding, I enjoy exploring new technologies, learning best practices in frontend development, and working on projects that challenge my creativity and problem-solving skills.
               </Typography>
-
+              
               <Button
                 variant="outlined"
                 size="large"
