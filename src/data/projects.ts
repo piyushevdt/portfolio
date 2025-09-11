@@ -155,5 +155,63 @@ export const projects: Project[] = [
   ],
   github: 'https://github.com/piyushevdt/oss-website',
   demoUrl: 'https://oss-website.netlify.app/'
+},
+{
+  id: 'uniklinger',
+  title: 'Uniklinger',
+  description: 'A corporate website for Uniklinger, showcasing precision-engineered valves, steam traps, and fluid control solutions with global reach and advanced manufacturing capabilities.',
+  technologies: ['React.js', 'Material-UI', 'Framer Motion', 'JavaScript', 'EmailJS'],
+  image: '/images/ukl.png', 
+  link: '#',
+  detailedDescription: 'Uniklinger’s website highlights their expertise in fluid control, sealing, steam engineering, and safety valves. Featuring smooth animations, an extensive product catalog, and integrated contact forms for inquiries, it emphasizes global service, advanced solutions, and sustainable engineering practices.',
+  features: [
+    'Interactive product catalog for valves, steam traps, and fluid control systems',
+    'Material-UI design for a professional and consistent look',
+    'EmailJS-powered inquiry forms for instant customer communication',
+    'Detailed service sections for greenfield and brownfield project support',
+    'Mobile-responsive layout optimized for global users and distributors'
+  ],
+  challenges: [
+    'Presenting complex industrial solutions in an intuitive format',
+    'Ensuring fast performance despite heavy technical content and imagery',
+    'Providing real-time inquiry options without a dedicated backend infrastructure'
+  ],
+  solutions: [
+    'Utilized lazy-loading and optimized assets to enhance site speed',
+    'Crafted user-friendly navigation with expandable sections for detailed products',
+    'Integrated EmailJS to enable seamless communication between clients and technical experts'
+  ],
+  github: 'https://github.com/piyushevdt/ukl-frontend',
+  demoUrl: 'https://www.uniklinger.com'
+},
+{
+  id: 'travel',
+  title: 'Travel',
+  description: 'A modern booking platform for hotels, flights, and destination packages, helping users plan and enjoy their trips with ease and confidence.',
+  technologies: ['Next.js', 'Material-UI', 'Framer Motion', 'JavaScript', 'EmailJS'],
+  image: '/images/travel.png', 
+  link: '#',
+  detailedDescription: 'Travel’s website offers users a seamless experience to explore and book hotels, flights, and destination packages. With engaging animations, intuitive navigation, and quick inquiry forms, it aims to inspire adventure and simplify the booking process for travelers worldwide.',
+  features: [
+    'Search and filter for hotels, flights, and destination packages',
+    'Material-UI design for a sleek and responsive user interface',
+    'Framer Motion animations for smooth transitions and interactions',
+    'EmailJS-powered booking inquiries and contact forms',
+    'Mobile-friendly layout to support travelers on the go'
+  ],
+  challenges: [
+    'Creating an easy-to-use interface for multiple booking options',
+    'Maintaining fast load times with rich imagery and animations',
+    'Handling user interactions without a complex backend setup'
+  ],
+  solutions: [
+    'Implemented lazy loading and optimized media assets to improve performance',
+    'Designed modular components with Material-UI for consistency and scalability',
+    'Used EmailJS for instant communication, reducing dependency on backend infrastructure'
+  ],
+  github: 'https://github.com/piyushevdt/travel',
+  demoUrl: 'https://travel-bay-seven.vercel.app/'
 }
+
+
 ];
