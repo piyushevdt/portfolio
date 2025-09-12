@@ -57,7 +57,7 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
   useGsap({
     elementRef: cardRef,
     animation: {
-      from: { opacity: 0, y: 100, scale: 0.8 },
+      from: { opacity: 0, y: 100, scale: 0.3 },
       to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" }
     },
     delay: index * 0.2
@@ -94,9 +94,9 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
           sx={{
             backgroundColor: 'tertiary.main',
             borderRadius: '20px',
-            py: { xs: 3, md: 5 },
-            px: { xs: 4, sm: 8, md: 12 },
-            minHeight: { xs: 240, md: 280 },
+            py: { xs: 2, md: 5 },
+            px: { xs: 2, sm: 8, md: 12 },
+            minHeight: { xs: '100%', md: 280 },
             display: 'flex',
             justifyContent: 'space-evenly',
             alignItems: 'center',
@@ -118,7 +118,7 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
             variant="h6"
             sx={{
               color: 'white',
-              fontSize: { xs: '18px', sm: '20px' },
+              fontSize: { xs: '16px', sm: '20px' },
               fontWeight: 'bold',
               textAlign: 'center'
             }}
