@@ -143,11 +143,11 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
         <Box
           ref={contentRef}
           sx={{
-            backgroundColor: 'tertiary.main',
+            // backgroundColor: 'tertiary.main',
             borderRadius: '20px',
-            py: { xs: 2, md: 5 },
-            px: { xs: 2, sm: 8, md: 12 },
-            minHeight: { xs: '100%', md: 280 },
+            py: { xs: 2, md: 4 },
+            px: { xs: 2, md: 4 },
+            minHeight: { xs: '100%', md: "100%" },
             display: 'flex',
             justifyContent: 'space-evenly',
             alignItems: 'center',

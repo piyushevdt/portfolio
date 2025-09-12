@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography, Avatar, Grid, useTheme, Button } from '@mui/material';
 import { motion } from 'framer-motion';
+import Experience from './Experience';
 
 const About: React.FC = () => {
   const theme = useTheme();
@@ -373,6 +374,7 @@ const About: React.FC = () => {
           </Grid>
         </Grid>
       </Container>
+      <Experience/>
     </Box>
   );
 };
