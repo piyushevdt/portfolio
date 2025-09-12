@@ -10,7 +10,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import "@/styles/skills.css"
 // import useResponsive from '@/hooks/useResponsive';
-import { Tilt } from 'react-tilt';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,18 +52,76 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Element => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useGsap({
     elementRef: cardRef,
     animation: {
       from: { opacity: 0, y: 100, scale: 0.3 },
-      to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" }
+      to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power4.out" }
     },
     delay: index * 0.2
   });
 
+  // GSAP hover animation
+  useEffect(() => {
+    if (cardRef.current && contentRef.current) {
+      const card = cardRef.current;
+      const content = contentRef.current;
+
+      const handleMouseEnter = () => {
+        gsap.to(card, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power2.out",
+          backgroundColor: 'rgba(252, 251, 252, 0.3)',
+          boxShadow: "0 4px 20px rgba(255, 255, 255, 0.2)",
+        });
+        gsap.to(content, {
+          color: "#fff",
+          fontWeight: '700',
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(card, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+          backgroundColor: 'rgba(255, 255, 255, 0.75)',
+          boxShadow: 1,
+        });
+        gsap.to(content, {
+          color: "inherit",
+          fontWeight: 'normal',
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+
+      card.addEventListener('mouseenter', handleMouseEnter);
+      card.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        card.removeEventListener('mouseenter', handleMouseEnter);
+        card.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, []);
+
   return (
-    <Tilt className="xs:w-[250px]">
+    <Box
+      className="xs:w-[250px]"
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Box
         ref={cardRef}
         sx={{
@@ -74,16 +131,9 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
           textAlign: 'center',
           transition: 'all 0.3s ease',
           backdropFilter: 'blur(0)',
-          '&:hover': {
-            transform: 'scale(1.05)',
-            backgroundColor: 'rgba(252, 251, 252, 0.3)',
-            backdropFilter: 'blur(8px)',
-            color: "#fff",
-            fontWeight: '700',
-            boxShadow: "0 4px 20px rgba(255, 255, 255, 0.2)",
-          },
           p: '1px',
           borderRadius: '20px',
+          cursor: 'pointer',
           // boxShadow: 3,
           // '&:hover': {
           //   boxShadow: 6,
@@ -91,6 +141,7 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
         }}
       >
         <Box
+          ref={contentRef}
           sx={{
             backgroundColor: 'tertiary.main',
             borderRadius: '20px',
@@ -101,6 +152,7 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
             justifyContent: 'space-evenly',
             alignItems: 'center',
             flexDirection: 'column',
+            transition: 'all 0.3s ease',
           }}
         >
           <Box
@@ -112,6 +164,11 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
               height: 80,
               objectFit: 'contain',
               transition: 'all 0.3s ease',
+              filter: 'grayscale(30%)',
+              '&:hover': {
+                filter: 'grayscale(0%)',
+                transform: 'scale(1.1)',
+              }
             }}
           />
           <Typography
@@ -120,14 +177,15 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
               color: 'white',
               fontSize: { xs: '16px', sm: '20px' },
               fontWeight: 'bold',
-              textAlign: 'center'
+              textAlign: 'center',
+              transition: 'all 0.3s ease',
             }}
           >
             {name}
           </Typography>
         </Box>
       </Box>
-    </Tilt>
+    </Box>
   );
 };
 

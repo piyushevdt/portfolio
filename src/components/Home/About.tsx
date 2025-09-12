@@ -1,23 +1,9 @@
 import React from 'react';
 import { Box, Container, Typography, Avatar, Grid, useTheme, Button } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Tilt } from 'react-tilt';
 
 const About: React.FC = () => {
   const theme = useTheme();
-
-  // Tilt options for the avatar
-  const tiltOptions = {
-    reverse: false,
-    max: 15,
-    perspective: 1000,
-    scale: 1.05,
-    speed: 1000,
-    transition: true,
-    axis: null,
-    reset: true,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-  };
 
   // Animation variants
   const containerVariants = {
@@ -88,7 +74,37 @@ const About: React.FC = () => {
         duration: 1,
         ease: "easeOut"
       }
+    },
+    hover: {
+      scale: 1.05,
+      rotateY: 10,
+      rotateX: 5,
+      boxShadow: "0 20px 40px rgba(98, 0, 234, 0.5)",
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
     }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const element = e.currentTarget;
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateY = ((x - centerX) / centerX) * 10;
+    const rotateX = ((y - centerY) / centerY) * -10;
+
+    element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const element = e.currentTarget;
+    element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   };
 
   return (
@@ -189,63 +205,65 @@ const About: React.FC = () => {
               viewport={{ once: false, amount: 0.3 }}
               style={{ display: 'flex', justifyContent: 'center' }}
             >
-              <Tilt options={tiltOptions} style={{ height: 'auto', width: 'auto' }}>
-                <motion.div
-                  variants={avatarVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.3 }}
-                  style={{
-                    width: 280,
-                    height: 280,
+              <motion.div
+                variants={avatarVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
+                viewport={{ once: false, amount: 0.3 }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  width: 280,
+                  height: 280,
+                  borderRadius: '50%',
+                  position: 'relative',
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(98, 0, 234, 0.3)',
+                  cursor: 'pointer',
+                  transition: 'transform 0.1s ease-out, box-shadow 0.3s ease-out',
+                }}
+              >
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '100%',
                     borderRadius: '50%',
                     position: 'relative',
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 10px 30px rgba(98, 0, 234, 0.3)',
-                    cursor: 'pointer',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: -10,
+                      borderRadius: '50%',
+                      background: `linear-gradient(45deg, 
+                        ${theme.palette.primary.main}, 
+                        ${theme.palette.secondary.main})`,
+                      zIndex: -1,
+                      opacity: 0.7,
+                      filter: 'blur(20px)',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: -5,
+                      borderRadius: '50%',
+                      border: `2px solid ${theme.palette.primary.main}`,
+                      zIndex: -1,
+                      opacity: 0.5,
+                    },
                   }}
                 >
-                  <Box
+                  <Avatar
+                    src="/images/Photo.jpg"
+                    alt="Profile Image"
                     sx={{
                       width: '100%',
                       height: '100%',
-                      borderRadius: '50%',
-                      position: 'relative',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: -10,
-                        borderRadius: '50%',
-                        background: `linear-gradient(45deg, 
-                          ${theme.palette.primary.main}, 
-                          ${theme.palette.secondary.main})`,
-                        zIndex: -1,
-                        opacity: 0.7,
-                        filter: 'blur(20px)',
-                      },
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: -5,
-                        borderRadius: '50%',
-                        border: `2px solid ${theme.palette.primary.main}`,
-                        zIndex: -1,
-                        opacity: 0.5,
-                      },
+                      border: `3px solid ${theme.palette.background.paper}`,
                     }}
-                  >
-                    <Avatar
-                      src="/images/Photo.jpg"
-                      alt="Profile Image"
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        border: `3px solid ${theme.palette.background.paper}`,
-                      }}
-                    />
-                  </Box>
-                </motion.div>
-              </Tilt>
+                  />
+                </Box>
+              </motion.div>
             </motion.div>
           </Grid>
 
