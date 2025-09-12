@@ -1,164 +1,101 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Box, Container, Typography, Avatar, Grid, useTheme, Button } from '@mui/material';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { TextPlugin } from 'gsap/dist/TextPlugin';
-
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+import { motion } from 'framer-motion';
+import { Tilt } from 'react-tilt';
 
 const About: React.FC = () => {
   const theme = useTheme();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const avatarRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Register GSAP plugins
-    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+  // Tilt options for the avatar
+  const tiltOptions = {
+    reverse: false,
+    max: 15,
+    perspective: 1000,
+    scale: 1.05,
+    speed: 1000,
+    transition: true,
+    axis: null,
+    reset: true,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+  };
 
-    // Section entrance animation
-    if (sectionRef.current) {
-      gsap.from(sectionRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 80,
-        duration: 1.2,
-        ease: 'power3.out',
-      });
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
     }
+  };
 
-    // Title animation
-    if (titleRef.current) {
-      gsap.from(titleRef.current, {
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 80%',
-        },
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: 'elastic.out(1, 0.5)',
-      });
-    }
-
-    // Image animation
-    if (imageRef.current) {
-      gsap.from(imageRef.current, {
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top 75%',
-        },
-        x: -100,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'back.out(1.7)',
-      });
-
-      // Continuous subtle floating animation
-      gsap.to(imageRef.current, {
-        y: 20,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-    }
-
-    // Text animation
-    if (textRef.current) {
-      const textElements = Array.from(textRef.current.children);
-      gsap.from(textElements, {
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: 'top 70%',
-        },
-        x: 80,
-        opacity: 0,
-        stagger: 0.15,
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
         duration: 0.8,
-        ease: 'power3.out',
-      });
-    }
-
-    // Avatar 3D tilt effect
-    const handleMouseMove = (e: MouseEvent) => {
-      const element = avatarRef.current;
-      if (!element) return;
-
-      const rect = element.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = ((y - centerY) / centerY) * 10;
-      const rotateY = ((x - centerX) / centerX) * -10;
-
-      gsap.to(element, {
-        rotateX,
-        rotateY,
-        transformPerspective: 1000,
-        transformOrigin: 'center center',
-        ease: 'power1.out',
-        duration: 0.5,
-      });
-
-      // Parallax effect for the shadow
-      const shadowX = (x - centerX) / 20;
-      const shadowY = (y - centerY) / 20;
-      const shadowBlur = 20 + Math.abs(x - centerX) / 10;
-
-      element.style.boxShadow = `
-        ${shadowX}px ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(98, 0, 234, 0.3)
-      `;
-    };
-
-    const handleMouseLeave = () => {
-      if (avatarRef.current) {
-        gsap.to(avatarRef.current, {
-          rotateX: 0,
-          rotateY: 0,
-          boxShadow: '0 10px 30px rgba(98, 0, 234, 0.3)',
-          duration: 1,
-          ease: 'elastic.out(1, 0.5)',
-        });
+        ease: "easeOut"
       }
-    };
-
-    const container = avatarRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('mouseleave', handleMouseLeave);
     }
+  };
 
-    return () => {
-      if (container) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('mouseleave', handleMouseLeave);
+  const titleVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
       }
-    };
-  }, []);
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const avatarVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: "easeOut"
+      }
+    }
+  };
 
   return (
     <Box
-      ref={sectionRef}
       id="about"
       sx={{
         py: 12,
-        // background: `
-        //   linear-gradient(135deg, 
-        //     ${theme.palette.background.default} 0%, 
-        //     ${theme.palette.background.paper} 50%, 
-        //     ${theme.palette.background.default} 100%)
-        // `,
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
@@ -188,190 +125,233 @@ const About: React.FC = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Box ref={titleRef} sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{
-              mb: 2,
-              fontWeight: 700,
-              background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-              position: 'relative',
-              display: 'inline-block',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                bottom: -8,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '60%',
-                height: 4,
+        <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <motion.div
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{
+                mb: 2,
+                fontWeight: 700,
                 background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                borderRadius: 2,
-              },
-            }}
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                position: 'relative',
+                display: 'inline-block',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: -8,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '60%',
+                  height: 4,
+                  background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  borderRadius: 2,
+                },
+              }}
+            >
+              About Me
+            </Typography>
+          </motion.div>
+          
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
           >
-            About Me
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              color: "#fff",
-              maxWidth: 600,
-              mx: 'auto',
-            }}
-          >
-            Get to know the person behind the code
-          </Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                color: "#fff",
+                maxWidth: 600,
+                mx: 'auto',
+              }}
+            >
+              Get to know the person behind the code
+            </Typography>
+          </motion.div>
         </Box>
 
         <Grid container spacing={6} alignItems="center">
           <Grid size={{ xs: 12, md: 5 }}>
-            <Box
-              ref={imageRef}
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                perspective: '1000px',
-                position: 'relative',
-              }}
+            <motion.div
+              variants={imageVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              style={{ display: 'flex', justifyContent: 'center' }}
             >
-              <Box
-                ref={avatarRef}
-                sx={{
-                  width: 280,
-                  height: 280,
-                  borderRadius: '50%',
-                  position: 'relative',
-                  transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(98, 0, 234, 0.3)',
-                  transition: 'transform 0.5s ease-out',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: -10,
+              <Tilt options={tiltOptions} style={{ height: 'auto', width: 'auto' }}>
+                <motion.div
+                  variants={avatarVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
+                  style={{
+                    width: 280,
+                    height: 280,
                     borderRadius: '50%',
-                    background: `linear-gradient(45deg, 
-                      ${theme.palette.primary.main}, 
-                      ${theme.palette.secondary.main})`,
-                    zIndex: -1,
-                    opacity: 0.7,
-                    filter: 'blur(20px)',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: -5,
-                    borderRadius: '50%',
-                    border: `2px solid ${theme.palette.primary.main}`,
-                    zIndex: -1,
-                    opacity: 0.5,
-                  },
-                }}
-              >
-                <Avatar
-                  src="/images/Photo.jpg"
-                  alt="Profile Image"
-                  sx={{
-                    width: '100%',
-                    height: '100%',
-                    border: `3px solid ${theme.palette.background.paper}`,
-                    transform: 'translateZ(30px)',
+                    position: 'relative',
+                    transformStyle: 'preserve-3d',
+                    boxShadow: '0 10px 30px rgba(98, 0, 234, 0.3)',
+                    cursor: 'pointer',
                   }}
-                />
-              </Box>
-            </Box>
+                >
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: '50%',
+                      position: 'relative',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: -10,
+                        borderRadius: '50%',
+                        background: `linear-gradient(45deg, 
+                          ${theme.palette.primary.main}, 
+                          ${theme.palette.secondary.main})`,
+                        zIndex: -1,
+                        opacity: 0.7,
+                        filter: 'blur(20px)',
+                      },
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: -5,
+                        borderRadius: '50%',
+                        border: `2px solid ${theme.palette.primary.main}`,
+                        zIndex: -1,
+                        opacity: 0.5,
+                      },
+                    }}
+                  >
+                    <Avatar
+                      src="/images/Photo.jpg"
+                      alt="Profile Image"
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        border: `3px solid ${theme.palette.background.paper}`,
+                      }}
+                    />
+                  </Box>
+                </motion.div>
+              </Tilt>
+            </motion.div>
           </Grid>
+
           <Grid size={{ xs: 12, md: 7 }}>
-            <Box ref={textRef}>
-              <Typography
-                variant="h4"
-                component="h3"
-                gutterBottom
-                sx={{
-                  fontWeight: 700,
-                  mb: 3,
-                  color: "#fff",
-                  position: 'relative',
-                  display: 'inline-block',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: -8,
-                    left: 0,
-                    width: 60,
-                    height: 4,
-                    background: `linear-gradient(90deg, ${theme.palette.primary.main}, transparent)`,
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <motion.div variants={textVariants}>
+                <Typography
+                  variant="h4"
+                  component="h3"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
+                    mb: 3,
+                    color: "#fff",
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: -8,
+                      left: 0,
+                      width: 60,
+                      height: 4,
+                      background: `linear-gradient(90deg, ${theme.palette.primary.main}, transparent)`,
+                      borderRadius: 2,
+                    },
+                  }}
+                >
+                  Who am I?
+                </Typography>
+              </motion.div>
+
+              <motion.div variants={textVariants}>
+                <Typography
+                  paragraph
+                  sx={{
+                    mb: 3,
+                    fontSize: '1.1rem',
+                    lineHeight: 1.8,
+                    color: "#fff",
+                  }}
+                >
+                  I&apos;m a <strong style={{ color: "red" }}>frontend developer</strong> with hands-on experience in building responsive and user-friendly web applications. I specialize in working with <strong style={{ color: "red" }}>React, Next.js, and modern UI libraries</strong> to create clean and engaging digital experiences.
+                </Typography>
+              </motion.div>
+
+              <motion.div variants={textVariants}>
+                <Typography
+                  paragraph
+                  sx={{
+                    mb: 3,
+                    fontSize: '1.1rem',
+                    lineHeight: 1.8,
+                    color: "#fff",
+                  }}
+                >
+                  My goal is to develop applications that are not only functional but also deliver an <strong style={{ color: "red" }}>intuitive and enjoyable user experience</strong>. I focus on writing clean, maintainable code and continuously improving my skills in performance optimization and scalability.
+                </Typography>
+              </motion.div>
+
+              <motion.div variants={textVariants}>
+                <Typography
+                  paragraph
+                  sx={{
+                    mb: 4,
+                    fontSize: '1.1rem',
+                    lineHeight: 1.8,
+                    color: "#fff",
+                  }}
+                >
+                  Beyond coding, I enjoy exploring new technologies, learning best practices in frontend development, and working on projects that challenge my creativity and problem-solving skills.
+                </Typography>
+              </motion.div>
+
+              <motion.div variants={textVariants}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  component="a"
+                  href="/pdf/resume.pdf"
+                  download="Piyush_Resume.pdf"
+                  sx={{
+                    px: 4,
+                    py: 1.5,
                     borderRadius: 2,
-                  },
-                }}
-              >
-                Who am I?
-              </Typography>
-              <Typography
-                paragraph
-                sx={{
-                  mb: 3,
-                  fontSize: '1.1rem',
-                  lineHeight: 1.8,
-                  color: "#fff",
-                }}
-              >
-                I&apos;m a <strong style={{ color: "red" }}>frontend developer</strong> with hands-on experience in building responsive and user-friendly web applications. I specialize in working with <strong style={{ color: "red" }}>React, Next.js, and modern UI libraries</strong> to create clean and engaging digital experiences.
-              </Typography>
-
-              <Typography
-                paragraph
-                sx={{
-                  mb: 3,
-                  fontSize: '1.1rem',
-                  lineHeight: 1.8,
-                  color: "#fff",
-                }}
-              >
-                My goal is to develop applications that are not only functional but also deliver an <strong style={{ color: "red" }}>intuitive and enjoyable user experience</strong>. I focus on writing clean, maintainable code and continuously improving my skills in performance optimization and scalability.
-              </Typography>
-
-              <Typography
-                paragraph
-                sx={{
-                  mb: 4,
-                  fontSize: '1.1rem',
-                  lineHeight: 1.8,
-                  color: "#fff",
-                }}
-              >
-                Beyond coding, I enjoy exploring new technologies, learning best practices in frontend development, and working on projects that challenge my creativity and problem-solving skills.
-              </Typography>
-              
-              <Button
-                variant="outlined"
-                size="large"
-                component="a"
-                href="/pdf/resume.pdf"
-                download="Piyush_Resume.pdf" // This will be the filename when downloaded
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: 2,
-                  fontWeight: 600,
-                  borderWidth: 2,
-                  '&:hover': {
+                    fontWeight: 600,
                     borderWidth: 2,
-                    background: `linear-gradient(135deg, 
-        ${theme.palette.primary.main}, 
-        ${theme.palette.secondary.main})`,
-                    color: theme.palette.common.white,
-                    boxShadow: `0 5px 15px ${theme.palette.primary.main}40`,
-                  },
-                }}
-              >
-                Download Resume
-              </Button>
-            </Box>
+                    '&:hover': {
+                      borderWidth: 2,
+                      background: `linear-gradient(135deg, 
+                        ${theme.palette.primary.main}, 
+                        ${theme.palette.secondary.main})`,
+                      color: theme.palette.common.white,
+                      boxShadow: `0 5px 15px ${theme.palette.primary.main}40`,
+                    },
+                  }}
+                >
+                  Download Resume
+                </Button>
+              </motion.div>
+            </motion.div>
           </Grid>
         </Grid>
       </Container>
