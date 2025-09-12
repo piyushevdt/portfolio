@@ -57,10 +57,10 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
   useGsap({
     elementRef: cardRef,
     animation: {
-      from: { opacity: 0, y: 100, scale: 0.3 },
+      from: { opacity: 0, y: 100, scale: 0.1 },
       to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power4.out" }
     },
-    delay: index * 0.2
+    delay: index * 0.5
   });
 
   // GSAP hover animation
