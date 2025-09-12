@@ -8,43 +8,161 @@ import {
 } from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { motion } from 'framer-motion';
 import "@/styles/skills.css"
-import useResponsive from '@/hooks/useResponsive';
+// import useResponsive from '@/hooks/useResponsive';
+import { Tilt } from 'react-tilt';
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface AnimationProps {
+  from: gsap.TweenVars;
+  to: gsap.TweenVars;
+}
+
+interface UseGsapProps {
+  elementRef: React.RefObject<HTMLElement | null>;
+  animation: AnimationProps;
+  delay?: number;
+}
+
+const useGsap = ({ elementRef, animation, delay = 0 }: UseGsapProps): void => {
+  useEffect(() => {
+    if (elementRef.current) {
+      gsap.fromTo(
+        elementRef.current,
+        animation.from,
+        {
+          ...animation.to,
+          delay,
+          scrollTrigger: {
+            trigger: elementRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+  }, [elementRef, animation, delay]);
+};
+
+interface ServiceCardProps {
+  index: number;
+  name: string;
+  image: string;
+}
+
+const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Element => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useGsap({
+    elementRef: cardRef,
+    animation: {
+      from: { opacity: 0, y: 100, scale: 0.8 },
+      to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" }
+    },
+    delay: index * 0.2
+  });
+
+  return (
+    <Tilt className="xs:w-[250px]">
+      <Box
+        ref={cardRef}
+        sx={{
+          width: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.75)', // semi-transparent
+          boxShadow: 1,
+          textAlign: 'center',
+          transition: 'all 0.3s ease',
+          backdropFilter: 'blur(0)',
+          '&:hover': {
+            transform: 'scale(1.05)',
+            backgroundColor: 'rgba(252, 251, 252, 0.3)',
+            backdropFilter: 'blur(8px)',
+            color: "#fff",
+            fontWeight: '700',
+            boxShadow: "0 4px 20px rgba(255, 255, 255, 0.2)",
+          },
+          p: '1px',
+          borderRadius: '20px',
+          // boxShadow: 3,
+          // '&:hover': {
+          //   boxShadow: 6,
+          // }
+        }}
+      >
+        <Box
+          sx={{
+            backgroundColor: 'tertiary.main',
+            borderRadius: '20px',
+            py: { xs: 3, md: 5 },
+            px: { xs: 4, sm: 8, md: 12 },
+            minHeight: { xs: 240, md: 280 },
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <Box
+            component="img"
+            src={image}
+            alt={name}
+            sx={{
+              width: 80,
+              height: 80,
+              objectFit: 'contain',
+              transition: 'all 0.3s ease',
+            }}
+          />
+          <Typography
+            variant="h6"
+            sx={{
+              color: 'white',
+              fontSize: { xs: '18px', sm: '20px' },
+              fontWeight: 'bold',
+              textAlign: 'center'
+            }}
+          >
+            {name}
+          </Typography>
+        </Box>
+      </Box>
+    </Tilt>
+  );
+};
+
+
 const skills = [
-  { name: 'React', level: 90, image: '/images/reactjs.svg' },
-  { name: 'Next.js', level: 80, image: 'https://www.svgrepo.com/show/342062/next-js.svg' },
-  { name: 'JavaScript', level: 95, image: '/images/javascript.svg' },
-  { name: 'TypeScript', level: 85, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png' },
-  { name: 'HTML', level: 95, image: '/images/html.svg' },
-  { name: 'CSS', level: 95, image: '/images/css.svg' },
-  { name: 'Material UI', level: 85, image: '/images/MUI.svg' },
-  { name: 'Framer Motion', level: 75, image: 'https://images.seeklogo.com/logo-png/44/3/framer-motion-logo-png_seeklogo-446185.png' },
-  { name: 'Tailwind CSS', level: 70, image: '/images/tailwind.svg' },
-  { name: 'GSAP', level: 70, image: 'https://dzakifadh.dev/img/gsap.png' },
-  { name: 'Redux', level: 70, image: '/images/redux.svg' },
+  { name: 'React', image: '/images/reactjs.svg' },
+  { name: 'Next.js', image: 'https://www.svgrepo.com/show/342062/next-js.svg' },
+  { name: 'JavaScript', image: '/images/javascript.svg' },
+  { name: 'TypeScript', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png' },
+  { name: 'HTML', image: '/images/html.svg' },
+  { name: 'CSS', image: '/images/css.svg' },
+  { name: 'Material UI', image: '/images/MUI.svg' },
+  { name: 'Framer Motion', image: 'https://images.seeklogo.com/logo-png/44/3/framer-motion-logo-png_seeklogo-446185.png' },
+  { name: 'Tailwind CSS', image: '/images/tailwind.svg' },
+  { name: 'GSAP', image: 'https://dzakifadh.dev/img/gsap.png' },
+  { name: 'Redux', image: '/images/redux.svg' },
 ];
 
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  }),
-};
+// const itemVariants = {
+//   hidden: { opacity: 0, scale: 0.8, y: 30 },
+//   visible: (i: number) => ({
+//     opacity: 1,
+//     scale: 1,
+//     y: 0,
+//     transition: {
+//       delay: i * 0.1,
+//       duration: 0.6,
+//       ease: 'easeOut',
+//     },
+//   }),
+// };
 
 const Skills: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useResponsive(768);
+  // const isMobile = useResponsive(768);
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -65,7 +183,7 @@ const Skills: React.FC = () => {
       ref={sectionRef}
       id="skills"
       sx={{
-        py: {xs: 2, md: 10},
+        py: { xs: 2, md: 10 },
         // backgroundColor: theme.palette.background.default,
       }}
     >
@@ -115,10 +233,10 @@ const Skills: React.FC = () => {
         <Typography variant="h2" component="h2" align="center" sx={{ mb: 6, color: "#fff" }}>
           My Skills
         </Typography>
-        <Grid container spacing={4} sx={{justifyContent: 'center'}}>
+        <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
           {skills.map((skill, index) => (
             <Grid size={{ xs: 6, sm: 4, md: 3 }} key={skill.name}>
-              <motion.div
+              {/* <motion.div
                 custom={index}
                 initial="hidden"
                 whileInView="visible"
@@ -162,7 +280,8 @@ const Skills: React.FC = () => {
                     />
                   </Box>
                 </Box>
-              </motion.div>
+              </motion.div> */}
+              <ServiceCard index={index} name={skill.name} image={skill.image} />
             </Grid>
           ))}
         </Grid>
