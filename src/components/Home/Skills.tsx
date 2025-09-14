@@ -60,7 +60,7 @@ const ServiceCard = ({ index, name, image }: ServiceCardProps): React.JSX.Elemen
       from: { opacity: 0, y: 100, scale: 0.1 },
       to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power4.out" }
     },
-    delay: index * 0.5
+    delay: index * 0.2
   });
 
   // GSAP hover animation
@@ -245,48 +245,6 @@ const Skills: React.FC = () => {
         // backgroundColor: theme.palette.background.default,
       }}
     >
-      {/* <ul className="background1">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul> */}
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Typography variant="h2" component="h2" align="center" sx={{ mb: 6, color: "#fff" }}>
           My Skills

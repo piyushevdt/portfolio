@@ -211,7 +211,33 @@ export const projects: Project[] = [
   ],
   github: 'https://github.com/piyushevdt/travel',
   demoUrl: 'https://travel-bay-seven.vercel.app/'
-}
-
-
+},
+{
+  id: 'texkart',
+  title: 'Texkart',
+  description: 'An e-commerce platform for buying textiles, offering users an intuitive dashboard to manage orders, track quantities, and explore a wide range of products with ease.',
+  technologies: ['Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS', 'Framer Motion'],
+  image: '/images/texkart.png',
+  link: '#',
+  detailedDescription: 'Texkart provides a streamlined experience for textile shopping, allowing users to browse products, manage orders, and track purchase quantities through an interactive dashboard. The platform combines modern design elements, responsive layouts, and engaging animations to enhance the user’s shopping journey.',
+  features: [
+    'Browse and purchase textile products with detailed information',
+    'User dashboard for tracking orders and quantities',
+    'Material-UI and Tailwind CSS for a responsive and sleek design',
+    'Framer Motion animations for smooth user interactions',
+    'TypeScript for type safety and improved developer experience'
+  ],
+  challenges: [
+    'Designing a user-friendly interface for managing orders and product details',
+    'Integrating multiple technologies while maintaining performance and responsiveness',
+    'Ensuring scalability and maintainability with a type-safe codebase'
+  ],
+  solutions: [
+    'Created modular components using Material-UI and Tailwind CSS for consistency and flexibility',
+    'Leveraged TypeScript to catch errors early and streamline development workflows',
+    'Implemented Framer Motion animations to enhance user experience without compromising load times'
+  ],
+  github: 'https://github.com/piyushevdt/texkart',
+  demoUrl: 'https://texkart-ze13.vercel.app/'
+},
 ];
