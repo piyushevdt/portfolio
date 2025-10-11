@@ -240,4 +240,38 @@ export const projects: Project[] = [
   github: 'https://github.com/piyushevdt/texkart',
   demoUrl: 'https://texkart-ze13.vercel.app/'
 },
+{
+  id: "dashboard",
+  title: "Admin Dashboard",
+  description: "A comprehensive admin dashboard with multi-level authorization system, featuring role-based access control for Super Admin, Admin, and Editor roles with full user management capabilities.",
+  technologies: ["Next.js", "TypeScript", "Material-UI", "React Context", "Local Storage API"],
+  image: "/images/dashboard.png",
+  link: "#",
+  detailedDescription: "This admin dashboard provides a robust multi-tier authorization system with three distinct user roles: Super Admin, Admin, and Editor. Super Admins have complete control over the system including creating and deleting users of all roles, while Admins can manage Editors and Viewers. The platform features a modern, responsive design with secure route protection and real-time user management capabilities.",
+  features: [
+    "Multi-level role-based authorization (Super Admin, Admin, Editor, Viewer)",
+    "Complete user management with create, edit, and delete functionalities",
+    "Secure route protection and permission-based access control",
+    "Real-time user session management with local storage persistence",
+    "Responsive Material-UI design with customizable sidebar navigation",
+    "Role-specific dashboard views and accessible features",
+    "User activity tracking with login history and join dates"
+  ],
+  challenges: [
+    "Implementing a secure and scalable role-based access control system",
+    "Managing complex permission hierarchies across different user roles",
+    "Creating a flexible navigation system that adapts to user permissions",
+    "Ensuring data persistence and security using client-side storage",
+    "Preventing unauthorized access to sensitive administrative functions"
+  ],
+  solutions: [
+    "Developed a hierarchical role system with permission inheritance using TypeScript enums",
+    "Implemented React Context for global state management of authentication and user data",
+    "Created reusable permission hooks for component-level access control",
+    "Designed a dynamic navigation system that shows/hides menu items based on user roles",
+    "Used Material-UI theming and components for consistent, accessible UI across all devices"
+  ],
+  github: "https://github.com/piyushevdt/my-dashboard",
+  demoUrl: "https://my-dashboard-xi-seven.vercel.app/login",
+}
 ];
