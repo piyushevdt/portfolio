@@ -708,7 +708,7 @@ const ProjectDetails: React.FC = () => {
                           sx={{
                             mt: { xs: 2, sm: 3 },
                             fontWeight: 600,
-                            color: theme.palette.success.main,
+                            color: theme.palette.primary.main,
                             display: 'flex',
                             alignItems: 'center',
                             fontSize: { xs: '1rem', sm: '1.25rem' },
@@ -718,7 +718,7 @@ const ProjectDetails: React.FC = () => {
                               width: { xs: '8px', sm: '12px' },
                               height: { xs: '8px', sm: '12px' },
                               borderRadius: '50%',
-                              backgroundColor: theme.palette.primary.main,
+                              backgroundColor: theme.palette.success.main,
                               marginRight: { xs: '6px', sm: '10px' }
                             }
                           }}
