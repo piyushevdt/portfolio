@@ -542,7 +542,7 @@ const ProjectDetails: React.FC = () => {
                   sx={{
                     mb: { xs: 2, sm: 3, md: 4 },
                     fontWeight: 600,
-                    color: theme.palette.mode === 'dark' ? theme.palette.grey[100] : theme.palette.grey[900],
+                    color: "#fff",
                     position: 'relative',
                     display: 'inline-block',
                     fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
@@ -617,7 +617,7 @@ const ProjectDetails: React.FC = () => {
                   sx={{
                     mb: { xs: 2, sm: 3, md: 4 },
                     fontWeight: 600,
-                    color: theme.palette.mode === 'dark' ? theme.palette.grey[100] : theme.palette.grey[900],
+                    color: "#fff",
                     position: 'relative',
                     display: 'inline-block',
                     fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
@@ -718,7 +718,7 @@ const ProjectDetails: React.FC = () => {
                               width: { xs: '8px', sm: '12px' },
                               height: { xs: '8px', sm: '12px' },
                               borderRadius: '50%',
-                              backgroundColor: theme.palette.success.main,
+                              backgroundColor: theme.palette.primary.main,
                               marginRight: { xs: '6px', sm: '10px' }
                             }
                           }}
