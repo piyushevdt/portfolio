@@ -11,13 +11,13 @@ import { motion } from 'framer-motion';
 
 const skills = [
   { name: 'React', image: '/images/reactjs.svg' },
-  { name: 'Next.js', image: 'https://www.svgrepo.com/show/342062/next-js.svg' },
+  { name: 'Next.js', image: 'images/next.png' },
   { name: 'JavaScript', image: '/images/javascript.svg' },
   { name: 'TypeScript', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png' },
   { name: 'HTML', image: '/images/html.svg' },
   { name: 'CSS', image: '/images/css.svg' },
   { name: 'Material UI', image: '/images/MUI.svg' },
-  { name: 'Framer Motion', image: 'https://images.seeklogo.com/logo-png/44/3/framer-motion-logo-png_seeklogo-446185.png' },
+  { name: 'Framer Motion', image: '/images/framer.png' },
   { name: 'Tailwind CSS', image: '/images/tailwind.svg' },
   { name: 'GSAP', image: 'https://dzakifadh.dev/img/gsap.png' },
   { name: 'Redux', image: '/images/redux.svg' },
