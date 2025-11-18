@@ -110,7 +110,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           display: 'flex',
           flexDirection: 'column',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(40, 40, 40, 0.3)' : 'rgba(5, 144, 250, 0.3)',
+          background:
+          "transparent linear-gradient(180deg, rgba(0, 238, 255, 0.67) 0%, rgba(0, 238, 255, 0.15) 100%)",
           backdropFilter: 'blur(8px)',
           color: "#fff",
           boxShadow: theme.palette.mode === 'dark' 

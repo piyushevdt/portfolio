@@ -113,6 +113,7 @@ const Contact: React.FC = () => {
           transform: "scale(1.02)",
           boxShadow: "0 0 13px 6px rgba(0, 249, 241, 0.81)",
         },
+        backdropFilter: 'blur(8px)',
       }}>
         <Typography variant="h2" component="h2" align="center" sx={{ mb: 6,  color: "#fff", }}>
           Get In Touch

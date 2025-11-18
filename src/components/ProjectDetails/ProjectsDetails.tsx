@@ -388,10 +388,10 @@ const ProjectDetails: React.FC = () => {
             </Grid>
 
             <Grid size={{ xs: 12, md: 5 }} sx={{
-              backgroundColor: theme.palette.mode === 'dark' ? 'rgba(40, 40, 40, 0.3)' : 'rgba(252, 251, 252, 0.3)',
+              backgroundColor: theme.palette.mode === 'dark' ? 'rgba(40, 40, 40, 0.3)' : 'rgba(5, 144, 250, 0.3)',
               backdropFilter: 'blur(8px)',
               color: "#fff",
-              boxShadow: theme.palette.mode === 'dark' ? "0 8px 25px rgba(0, 0, 0, 0.3)" : "0 8px 25px rgba(255, 255, 255, 0.3)",
+             boxShadow: theme.palette.mode === 'dark' ? "0 8px 25px rgba(71, 242, 248, 0.3)" : "0 8px 25px rgba(9, 240, 248, 0.43)",
               p: 3,
               borderRadius: 2,
             }}>
@@ -404,7 +404,7 @@ const ProjectDetails: React.FC = () => {
                 gutterBottom
                 sx={{
                   fontWeight: 700,
-                  color: theme.palette.mode === 'dark' ? theme.palette.grey[100] : theme.palette.grey[900],
+                  color: "#39fcfcff",
                   fontSize: { xs: '1.75rem', sm: '2.125rem', md: '3rem' },
                 }}
               >
@@ -477,7 +477,7 @@ const ProjectDetails: React.FC = () => {
                     size={isMobile ? "small" : "medium"}
                     sx={{
                       backgroundColor: accentColor,
-                      color: '#fff',
+                      color: '#000',
                       '&:hover': {
                         backgroundColor: `${accentColor}CC`,
                         transform: 'translateY(-3px)',
@@ -708,7 +708,7 @@ const ProjectDetails: React.FC = () => {
                           sx={{
                             mt: { xs: 2, sm: 3 },
                             fontWeight: 600,
-                            color: theme.palette.primary.main,
+                            color: "#39fcfcff",
                             display: 'flex',
                             alignItems: 'center',
                             fontSize: { xs: '1rem', sm: '1.25rem' },
@@ -718,7 +718,7 @@ const ProjectDetails: React.FC = () => {
                               width: { xs: '8px', sm: '12px' },
                               height: { xs: '8px', sm: '12px' },
                               borderRadius: '50%',
-                              backgroundColor: theme.palette.success.main,
+                              backgroundColor: "#39fcfcff",
                               marginRight: { xs: '6px', sm: '10px' }
                             }
                           }}

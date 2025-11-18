@@ -96,6 +96,7 @@ export default function Experience() {
                         "transparent linear-gradient(180deg, rgba(0, 238, 255, 0.44) 0%, rgba(0, 238, 255, 0.05) 100%)",
                       boxShadow: "0 0 15px rgba(46, 210, 210, 0.56)",
                       position: "relative",
+                      backdropFilter: 'blur(4px)',
                       "&:before": {
                         content: '""',
                         position: "absolute",
