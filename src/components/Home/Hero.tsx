@@ -3,7 +3,6 @@ import { Box, Container, Typography } from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import CustomButton from '../ui/CustomButton';
-import "@/styles/hero.css"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -168,17 +167,18 @@ const Hero: React.FC = () => {
                     <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: {xs: 2, sm: 4, md: 6},flexDirection: {xs: "column", sm: "row"} }}>
                         <CustomButton 
                             variant="contained" 
-                            color="secondary" 
+                            color="primary" 
                             size="large"
                             href="#contact"
                             sx={{ 
-                                color: 'white',
+                                // color: 'white',
                                 boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)',
                                 '&:hover': {
                                     transform: 'translateY(-2px)',
                                     boxShadow: '0 6px 20px rgba(0, 0, 0, 0.3)',
                                 },
                                 transition: 'all 0.3s ease',
+                                fontWeight: 600,
                             }}
                         >
                             Contact Me

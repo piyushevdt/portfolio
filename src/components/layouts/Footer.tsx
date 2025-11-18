@@ -27,8 +27,11 @@ const Footer: React.FC = () => {
       component="footer"
       sx={{ 
         py: 6,
-        backgroundColor: 'primary.main',
-        color: 'primary.contrastText',
+        background:
+          "transparent linear-gradient(180deg, rgba(0, 238, 255, 0.67) 0%, rgba(0, 238, 255, 0.15) 100%)",
+        color: '#fff',
+        boxShadow: "0 0 13px 6px rgba(0, 249, 241, 0.81)",
+        backdropFilter: 'blur(2px)',
       }}
     >
       <Container maxWidth="lg">
@@ -51,15 +54,6 @@ const Footer: React.FC = () => {
           >
             <LinkedIn fontSize="large" />
           </IconButton>
-          {/* <IconButton 
-            href="https://twitter.com/yourusername" 
-            target="_blank" 
-            rel="noopener"
-            color="inherit"
-            sx={{ mx: 1 }}
-          >
-            <Twitter fontSize="large" />
-          </IconButton> */}
           <IconButton 
             href="mailto:piyushkdbittu@gmail.com" 
             color="inherit"
