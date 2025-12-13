@@ -273,5 +273,36 @@ export const projects: Project[] = [
   ],
   github: "https://github.com/piyushevdt/my-dashboard",
   demoUrl: "https://my-dashboard-xi-seven.vercel.app/login",
-}
+},
+{
+  id: 'video-size-reducer',
+  title: 'Video Size Reducer',
+  description:
+    'A web-based tool that allows users to reduce video file sizes efficiently through an intuitive and responsive interface, making video sharing and storage easier.',
+  technologies: ['Next.js', 'JavaScript', 'Material-UI', 'Iconify'],
+  image: '/images/video-compress.png',
+  link: '#',
+  detailedDescription:
+    'The Video Size Reducer is a modern web application designed to help users compress videos quickly and effortlessly. Users can upload videos, choose compression levels, and download optimized files through a clean and responsive UI. The project focuses on usability, performance, and reusable component architecture.',
+  features: [
+    'Upload videos directly from the browser with instant preview',
+    'Multiple compression levels for flexible size optimization',
+    'Responsive and user-friendly interface using Material-UI',
+    'Reusable component-based architecture in Next.js',
+    'Iconify icons for a consistent and modern visual experience'
+  ],
+  challenges: [
+    'Designing a clean and intuitive workflow for video upload and compression',
+    'Managing large media files efficiently in a frontend-focused application',
+    'Ensuring responsiveness and accessibility across different devices'
+  ],
+  solutions: [
+    'Built modular and reusable components to keep the codebase clean and scalable',
+    'Implemented optimized UI flows to guide users through upload, compression, and download steps',
+    'Used Material-UI’s responsive system to ensure consistent design across screen sizes'
+  ],
+  github: 'https://github.com/piyushevdt/video-compress',
+  demoUrl: 'https://video-compress-rho.vercel.app/'
+},
+
 ];

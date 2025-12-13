@@ -100,6 +100,7 @@ const Contact: React.FC = () => {
       sx={{
         py: 10,
         // backgroundColor: theme.palette.background.default,
+        px: 2 ,
       }}
     >
       <Container maxWidth="md" sx={{
