@@ -149,17 +149,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <Chip
                 key={tech}
                 label={tech}
-                size="small"
+                // size="small"
                 sx={{
                   backgroundColor: accentColor
-                    ? `${accentColor}20`
+                    ? `${accentColor}30`
                     : theme.palette.mode === 'dark'
                       ? theme.palette.grey[800]
                       : theme.palette.grey[200],
                   color: accentColor
                     ? accentColor
                     : theme.palette.text.primary,
-                  fontWeight: 500,
+                  fontWeight: 900,
                 }}
               />
             ))}
