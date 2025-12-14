@@ -68,7 +68,7 @@ export const projects: Project[] = [
       'Implemented theme context with smooth transitions',
       'Optimized images with Next.js Image component and proper sizing'
     ],
-    github: 'hhttps://github.com/piyushevdt/portfolio',
+    github: 'https://github.com/piyushevdt/portfolio',
     demoUrl: 'https://portfolio-six-beta-17.vercel.app'
   },
   {
