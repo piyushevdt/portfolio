@@ -1,5 +1,7 @@
 "use client"
 import ParticleBackground from "@/components/ui/ParticleBackground";
+import { theme } from "@/styles/theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import Lenis from "lenis";
 import { useEffect } from "react";
 
@@ -37,7 +39,10 @@ export default function RootLayout({
         style={{ position: "relative" }}
       >
         <ParticleBackground />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

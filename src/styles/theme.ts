@@ -1,8 +1,8 @@
 import { createTheme } from '@mui/material/styles';
-import { Shadows_Into_Light } from 'next/font/google';
+import { Orbitron } from 'next/font/google';
 
-export const shadowsIntoLight = Shadows_Into_Light({
-  weight: '400',
+export const orbitron = Orbitron({
+  weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 });
 
@@ -20,30 +20,84 @@ export const theme = createTheme({
     },
   },
   typography: {
-      fontFamily: shadowsIntoLight.style.fontFamily,
-      h1: {
+    fontFamily: orbitron.style.fontFamily,
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 700,
+      '@media (min-width:600px)': {
+        fontSize: '2.5rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '3rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '3.5rem',
-        fontWeight: 700,
       },
-      h2: {
+    },
+    h2: {
+      fontSize: '1.75rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '2rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '2.4rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '2.8rem',
-        fontWeight: 600,
       },
-      h3: {
+    },
+    h3: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '1.75rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '2rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '2.2rem',
-        fontWeight: 600,
       },
-      h4: {
+    },
+    h4: {
+      fontSize: '1.25rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.4rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '1.6rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '1.8rem',
       },
-      h5: {
+    },
+    h5: {
+      fontSize: '1.1rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.25rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '1.4rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '1.5rem',
       },
-      h6: {
+    },
+    h6: {
+      fontSize: '1rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.1rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '1.15rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '1.2rem',
       },
     },
-   components: {
+  },
+  components: {
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -62,9 +116,9 @@ export const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: "rgba(0, 249, 241, 0.7)", // default label
+          color: "rgba(0, 249, 241, 0.7)",
           "&.Mui-focused": {
-            color: "rgba(0, 249, 241, 1)", // focused label
+            color: "rgba(0, 249, 241, 1)",
           },
         },
       },
