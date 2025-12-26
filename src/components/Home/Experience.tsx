@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, useTheme } from '@mui/material';
 import { motion } from "framer-motion";
 import { Box, Divider, Grid } from '@mui/material';
 import React from 'react'
@@ -29,21 +29,40 @@ const milestones = [
   // }
 ];
 export default function Experience() {
+    const theme = useTheme();
+  
   return (
     <Container>
       <motion.div variants={textVariant(0.1)}>
-        <Typography
+       <Box sx={{ textAlign: "center", mt: 6 }}>
+         <Typography
           variant="h3"
           gutterBottom
           sx={{
+            mb: 8,
             fontWeight: 700,
-            my: 6,
-            textAlign: "center",
-            color: "white"
+            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+            position: 'relative',
+            display: 'inline-block',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: -8,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '60%',
+              height: 4,
+              background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+              borderRadius: 2,
+            },
           }}
         >
           My Experience
         </Typography>
+       </Box>
       </motion.div>
       <Box sx={{ position: "relative" }}>
         <Divider
