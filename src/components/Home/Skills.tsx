@@ -6,6 +6,7 @@ import {
   Typography,
   Grid,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -55,6 +56,8 @@ const itemVariants = {
 const Skills: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery('(max-width:768px)');
+    const theme = useTheme();
+
 
   return (
     <Box
@@ -66,17 +69,39 @@ const Skills: React.FC = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <motion.div
+       <Box sx={{display: 'flex', justifyContent: 'center' }}>
+         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          <Typography variant="h2" component="h2" align="center" sx={{ mb: 6, color: "#fff" }}>
+          <Typography variant="h2" component="h2" align="center" sx={{
+            mb: 6,
+            fontWeight: 700,
+            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+            position: 'relative',
+            display: 'inline-block',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: -8,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '60%',
+              height: 4,
+              background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+              borderRadius: 2,
+            },
+          }}>
             My Skills
           </Typography>
         </motion.div>
-        
+       </Box>
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -102,7 +127,7 @@ const Skills: React.FC = () => {
                     sx={{
                       p: isMobile ? 1 : 2,
                       borderRadius: 4,
-                      backgroundColor: 'rgba(255, 255, 255, 0.75)', 
+                      backgroundColor: 'rgba(255, 255, 255, 0.75)',
                       boxShadow: 1,
                       textAlign: 'center',
                       transition: 'all 0.3s ease',
@@ -117,9 +142,9 @@ const Skills: React.FC = () => {
                       },
                     }}
                   >
-                    <Typography 
-                      variant={isMobile ? "body1" : "h5"} 
-                      gutterBottom 
+                    <Typography
+                      variant={isMobile ? "body1" : "h5"}
+                      gutterBottom
                       sx={{ fontWeight: 600 }}
                     >
                       {skill.name}

@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
                 duration: 1,
                 ease: 'power3.out',
             });
-    
+
             gsap.from(textRef.current.children, {
                 y: 50,
                 opacity: 0,
@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
                 duration: 0.8,
                 ease: 'power3.out',
             });
-    
+
             // Parallax effect
             gsap.to(heroRef.current, {
                 y: -50,
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
                 },
             });
 
-    
+
             return () => {
                 // Clean up GSAP animations
                 ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -150,27 +150,27 @@ const Hero: React.FC = () => {
    <li></li>
    <li></li>
 </ul> */}
-            
-            
+
+
             <Container maxWidth="lg">
                 <Box ref={textRef} sx={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                    <Typography variant="h1" 
-                        component="h1" 
+                    <Typography variant="h1"
+                        component="h1"
                         sx={{ mb: 2, fontWeight: 700, textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)' }}>
                         Hi, I&apos;m Piyush Kumar Dewangan
                     </Typography>
-                    <Typography variant="h2" 
-                        component="h2"  
+                    <Typography variant="h2"
+                        component="h2"
                         sx={{ mb: 2, textShadow: '0 2px 6px rgba(0, 0, 0, 0.2)' }}>
                         Frontend Developer
                     </Typography>
-                    <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: {xs: 2, sm: 4, md: 6},flexDirection: {xs: "column", sm: "row"} }}>
-                        <CustomButton 
-                            variant="contained" 
-                            color="primary" 
+                    <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: { xs: 2, sm: 4, md: 6 }, flexDirection: { xs: "column", sm: "row" } }}>
+                        <CustomButton
+                            variant="contained"
+                            color="primary"
                             size="large"
                             href="#contact"
-                            sx={{ 
+                            sx={{
                                 // color: 'white',
                                 boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)',
                                 '&:hover': {
@@ -183,9 +183,9 @@ const Hero: React.FC = () => {
                         >
                             Contact Me
                         </CustomButton>
-                        <CustomButton 
-                            variant="outlined" 
-                            color="inherit" 
+                        <CustomButton
+                            variant="outlined"
+                            color="inherit"
                             size="large"
                             href="#projects"
                             sx={{
