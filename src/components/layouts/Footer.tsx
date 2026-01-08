@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
           <IconButton 
-            href="https://github.com/piyushevdt" 
+            href="https://github.com/piyush25dev" 
             target="_blank" 
             rel="noopener"
             color="inherit"
