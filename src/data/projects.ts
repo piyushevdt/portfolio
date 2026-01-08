@@ -153,7 +153,7 @@ export const projects: Project[] = [
     'Implemented responsive layouts using Material UI',
     'Integrated mail functionality for direct user-to-seller communication'
   ],
-  github: 'https://github.com/piyush25dev/oss-website',
+  github: 'https://github.com/piyush25dev/OSS',
   demoUrl: 'https://oss-website.netlify.app/'
 },
 {
