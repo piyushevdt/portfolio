@@ -68,7 +68,7 @@ export const projects: Project[] = [
       'Implemented theme context with smooth transitions',
       'Optimized images with Next.js Image component and proper sizing'
     ],
-    github: 'https://github.com/piyushevdt/portfolio',
+    github: 'https://github.com/piyush25dev/portfolio',
     demoUrl: 'https://portfolio-six-beta-17.vercel.app'
   },
   {
@@ -96,7 +96,7 @@ export const projects: Project[] = [
       'Designed touch-friendly carousels with Framer Motion gestures',
       'Integrated EmailJS for direct client-to-email workflows'
     ],
-    github: 'https://github.com/piyushevdt/hems-website',
+    github: 'https://github.com/piyush25dev/hems-website',
     demoUrl: 'https://hems-website.vercel.app/'
   },
   {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
       'Used chart.js for clear data visualization',
       'Created intelligent caching to minimize API calls'
     ],
-    github: 'https://github.com/piyushevdt/weather-dashboard',
+    github: 'https://github.com/piyush25dev/weather-dashboard',
     demoUrl: 'https://weather-dashboard-ecru-five.vercel.app/'
   },
   {
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     'Implemented responsive layouts using Material UI',
     'Integrated mail functionality for direct user-to-seller communication'
   ],
-  github: 'https://github.com/piyushevdt/oss-website',
+  github: 'https://github.com/piyush25dev/oss-website',
   demoUrl: 'https://oss-website.netlify.app/'
 },
 {
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     'Crafted user-friendly navigation with expandable sections for detailed products',
     'Integrated EmailJS to enable seamless communication between clients and technical experts'
   ],
-  github: 'https://github.com/piyushevdt/ukl-frontend',
+  github: 'https://github.com/piyush25dev/ukl-frontend',
   demoUrl: 'https://www.uniklinger.com'
 },
 {
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     'Designed modular components with Material-UI for consistency and scalability',
     'Used EmailJS for instant communication, reducing dependency on backend infrastructure'
   ],
-  github: 'https://github.com/piyushevdt/travel',
+  github: 'https://github.com/piyush25dev/travel',
   demoUrl: 'https://travel-bay-seven.vercel.app/'
 },
 {
@@ -237,7 +237,7 @@ export const projects: Project[] = [
     'Leveraged TypeScript to catch errors early and streamline development workflows',
     'Implemented Framer Motion animations to enhance user experience without compromising load times'
   ],
-  github: 'https://github.com/piyushevdt/texkart',
+  github: 'https://github.com/piyush25dev/texkart',
   demoUrl: 'https://texkart-ze13.vercel.app/'
 },
 {
@@ -271,7 +271,7 @@ export const projects: Project[] = [
     "Designed a dynamic navigation system that shows/hides menu items based on user roles",
     "Used Material-UI theming and components for consistent, accessible UI across all devices"
   ],
-  github: "https://github.com/piyushevdt/my-dashboard",
+  github: "https://github.com/piyush25dev/my-dashboard",
   demoUrl: "https://my-dashboard-xi-seven.vercel.app/login",
 },
 {
@@ -301,7 +301,7 @@ export const projects: Project[] = [
     'Implemented optimized UI flows to guide users through upload, compression, and download steps',
     'Used Material-UI’s responsive system to ensure consistent design across screen sizes'
   ],
-  github: 'https://github.com/piyushevdt/video-compress',
+  github: 'https://github.com/piyush25dev/video-compress',
   demoUrl: 'https://video-compress-rho.vercel.app/'
 },
 
