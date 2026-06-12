@@ -55,6 +55,16 @@ const FloatingParticles = dynamic(
   { ssr: false }
 );
 
+// ── Utility function to convert title to URL-safe slug ──────────────────────
+const titleToSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-')      // Replace spaces with hyphens
+    .replace(/-+/g, '-')       // Replace multiple hyphens with single
+    .trim();
+};
+
 // ─── Scroll Animation Hook ──────────────────────────────────────────────────
 type AnimationVariant =
   | 'fadeUp'
@@ -79,25 +89,40 @@ function useScrollAnimation(
   const { threshold = 0.15, delay = 0, duration = 700, once = false } = options;
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    // Clean up any existing observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (once) observer.unobserve(el);
-        } else if (!once) {
-          setIsVisible(false);
+        if (entry) {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (once) observer.unobserve(el);
+          } else if (!once) {
+            setIsVisible(false);
+          }
         }
       },
       { threshold }
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    observerRef.current = observer;
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
   }, [threshold, once]);
 
   // Map variant → hidden / visible CSS
@@ -201,8 +226,14 @@ const ProjectDetails: React.FC = () => {
 
   const [fetchedProjects, setFetchedProjects] = useState<Project[]>([]);
 
-  const projectId = params?.id as string;
-  const project = projects.find(p => p.id === projectId) || fetchedProjects.find(p => p.id === projectId);
+  // Get the slug from params and find matching project
+  const slug = params?.id as string;
+  
+  // Search through both local projects and fetched projects by comparing slugs
+  let project = projects.find(p => titleToSlug(p.title) === slug);
+  if (!project) {
+    project = fetchedProjects.find(p => titleToSlug(p.title) === slug);
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -272,7 +303,9 @@ const ProjectDetails: React.FC = () => {
       '#FFCDD2', '#FFCC80', '#FFF59D', '#A5D6A7',
       '#90CAF9', '#CE93D8', '#80DEEA', '#BCAAA4',
     ];
-    const hash = project.id.split('').reduce((acc, char) => char.charCodeAt(0) + acc, 0);
+    const hash = project.title
+      .split('')
+      .reduce((acc, char) => char.charCodeAt(0) + acc, 0);
     return colors[hash % colors.length];
   };
 

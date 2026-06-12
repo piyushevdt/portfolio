@@ -50,8 +50,9 @@ const Footer: React.FC = () => {
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           Built with <Link href="https://nextjs.org/" color="inherit" target="_blank">Next.js</Link>,{' '}
           <Link href="https://mui.com/" color="inherit" target="_blank">Material UI</Link>,{' '}
-          <Link href="https://www.framer.com/motion/" color="inherit" target="_blank">Framer Motion</Link>, and{' '}
-          <Link href="https://greensock.com/gsap/" color="inherit" target="_blank">GSAP</Link>.
+          <Link href="https://www.framer.com/motion/" color="inherit" target="_blank">Framer Motion</Link>,{' '}
+          <Link href="https://greensock.com/gsap/" color="inherit" target="_blank">GSAP</Link> and{' '}
+          <Link href="https://firebase.google.com/" color="inherit" target="_blank">Firebase</Link>.
         </Typography>
       </Container>
     </Box>

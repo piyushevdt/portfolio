@@ -37,20 +37,49 @@ const FALLBACK_PROJECTS: Project[] = [
 const ACCENT_COLORS = ['#FF5252', '#FF9800', '#ffff11', '#FBC02D', '#CE93D8', '#ffffff'];
 const getAccentColor = (index: number) => ACCENT_COLORS[index % ACCENT_COLORS.length];
 
+// ── Utility function to convert title to URL-safe slug ──────────────────────
+const titleToSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-')      // Replace spaces with hyphens
+    .replace(/-+/g, '-')       // Replace multiple hyphens with single
+    .trim();
+};
+
 // ── Repeatable in-view hook ───────────────────────────────────────────────
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Clean up any existing observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
     const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
+      ([entry]) => {
+        if (entry) {
+          setInView(entry.isIntersecting);
+        }
+      },
       { threshold }
     );
+
     observer.observe(el);
-    return () => observer.disconnect();
+    observerRef.current = observer;
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
   }, [threshold]);
 
   return { ref, inView };
@@ -300,7 +329,7 @@ const Projects: React.FC = () => {
           image: doc.data().image || '',
           link: doc.data().link || '#',
         }));
-        // Sort by ID in reverse order (newest first)
+        // Sort by ID in reverse order (latest first)
         setProjects(fetchedProjects.sort((a, b) => b.id.localeCompare(a.id)));
       }
     } catch (err) {
@@ -340,22 +369,26 @@ const Projects: React.FC = () => {
             {/* ── Project Cards ── */}
             <Grid container spacing={4}>
               {currentProjects.length > 0 ? (
-                currentProjects.map((project, index) => (
-                  <Grid size={{ xs: 12, sm: 6 }} key={project.id} sx={{ display: 'flex' }}>
-                    <AnimatedCard index={index}>
-                      <ProjectCard
-                        id={project.id}
-                        title={project.title}
-                        description={project.description}
-                        technologies={project.technologies}
-                        image={project.image}
-                        link={project.link}
-                        accentColor={getAccentColor(startIndex + index)}
-                        externalLink={false}
-                      />
-                    </AnimatedCard>
-                  </Grid>
-                ))
+                currentProjects.map((project, index) => {
+                  const slug = titleToSlug(project.title);
+                  
+                  return (
+                    <Grid size={{ xs: 12, sm: 6 }} key={project.id} sx={{ display: 'flex' }}>
+                      <AnimatedCard index={index}>
+                        <ProjectCard
+                          id={slug}
+                          title={project.title}
+                          description={project.description}
+                          technologies={project.technologies}
+                          image={project.image}
+                          link={`/projects/${slug}`}
+                          accentColor={getAccentColor(startIndex + index)}
+                          externalLink={false}
+                        />
+                      </AnimatedCard>
+                    </Grid>
+                  );
+                })
               ) : (
                 <Grid size={{ xs: 12 }}>
                   <Alert severity="warning">
